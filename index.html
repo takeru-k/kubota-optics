@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>株式会社 久保田光学｜KUBOTA OPTICS.</title>
+    <meta
+      name="description"
+      content="岩手県花巻市にある光学レンズ研磨工場、株式会社久保田光学の公式サイトです。"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- ========== ヘッダー（常に追従） ========== -->
+    <header class="l-header js-header">
+      <div class="l-header__inner">
+        <a class="l-header__logo" href="index.html">株式会社 久保田光学</a>
+
+        <button
+          class="c-hamburger js-hamburger"
+          type="button"
+          aria-controls="global-nav"
+          aria-expanded="false"
+          aria-label="メニューを開く"
+        >
+          <span class="c-hamburger__line"></span>
+        </button>
+
+        <nav
+          class="l-header__nav js-drawer"
+          id="global-nav"
+          aria-label="グローバルナビゲーション"
+        >
+          <ul class="c-nav" role="list">
+            <li class="c-nav__item">
+              <a
+                class="c-nav__link is-current"
+                href="index.html"
+                aria-current="page"
+                >HOME</a
+              >
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="skill.html">SKILL</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="facility.html">FACILITY</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="company.html">COMPANY</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="contact.html">CONTACT</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="recruit.html">RECRUIT</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="interview.html">INTERVIEW</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- ========== KV + ABOUT（ロゴがスクロール追従→ABOUTで停止） ========== -->
+      <div class="p-top-visual">
+        <!-- 追従ロゴ：トラック内で sticky。トラック終端＝ABOUTのロゴ位置 -->
+        <div class="p-top-visual__logo-track" aria-hidden="false">
+          <h1 class="c-logo-mark js-logo-mark">
+            <span class="c-logo-mark__line c-logo-mark__line--top">KUBOTA</span>
+            <span class="c-logo-mark__line c-logo-mark__line--bottom"
+              >OPTICS<span class="c-logo-mark__dot">.</span></span
+            >
+          </h1>
+        </div>
+
+        <!-- KV -->
+        <section class="p-hero">
+          <video
+            class="p-hero__video js-hero-video"
+            src="images/top/hero.mp4"
+            poster="images/top/hero-poster.jpg"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            aria-hidden="true"
+          ></video>
+
+          <div class="p-hero__inner l-inner">
+            <!-- ロゴ分のスペース（実体は .c-logo-mark） -->
+            <div
+              class="p-hero__logo-space c-logo-space"
+              aria-hidden="true"
+            ></div>
+            <p class="p-hero__catch">人と仕組みで、ものづくりを磨く。</p>
+            <p class="p-hero__lead">
+              精度が求められる光学レンズの加工。<br />
+              久保田光学は、人と技術の力で<br />
+              高品質で安定した製品づくりに挑み続けます。
+            </p>
+          </div>
+
+          <p class="c-scroll-sign p-hero__scroll" aria-hidden="true">SCROLL</p>
+          <p class="p-hero__move" aria-hidden="true">
+            <span class="p-hero__move-text">KUBOTA</span>
+            <span class="p-hero__move-text">KOUGAKU</span>
+            <span class="p-hero__move-text p-hero__move-text--line">MOVE</span>
+          </p>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="p-about" aria-labelledby="about-heading">
+          <h2 class="u-visually-hidden" id="about-heading">
+            久保田光学について
+          </h2>
+          <div class="p-about__inner l-inner">
+            <div
+              class="p-about__logo-space c-logo-space"
+              aria-hidden="true"
+            ></div>
+
+            <div class="p-about__body">
+              <ul class="c-data-list" role="list">
+                <li class="c-data-list__item">
+                  <svg
+                    class="c-data-list__icon"
+                    viewBox="0 0 48 48"
+                    aria-hidden="true"
+                  >
+                    <circle cx="24" cy="24" r="18" />
+                    <circle cx="24" cy="24" r="12" />
+                    <path d="M16 22a9 9 0 0 1 6-6" />
+                  </svg>
+                  <p class="c-data-list__label">最大加工径</p>
+                  <p class="c-data-list__value">
+                    <small>Φ</small>135<small>mm</small>
+                  </p>
+                </li>
+                <li class="c-data-list__item">
+                  <svg
+                    class="c-data-list__icon"
+                    viewBox="0 0 48 48"
+                    aria-hidden="true"
+                  >
+                    <ellipse cx="24" cy="22" rx="18" ry="7" />
+                    <path d="M6 22v4c0 4 8 7 18 7s18-3 18-7v-4" />
+                  </svg>
+                  <p class="c-data-list__label">
+                    面精度<small>（実績）</small>
+                  </p>
+                  <p class="c-data-list__value">λ/10</p>
+                </li>
+                <li class="c-data-list__item">
+                  <svg
+                    class="c-data-list__icon"
+                    viewBox="0 0 48 48"
+                    aria-hidden="true"
+                  >
+                    <path d="M6 38V16l18-6 18 6v22Z" />
+                    <path d="M12 38v-9h8v9M26 24h12v6H26z" />
+                  </svg>
+                  <p class="c-data-list__label">創業</p>
+                  <p class="c-data-list__value">45<small>年</small></p>
+                </li>
+                <li class="c-data-list__item">
+                  <svg
+                    class="c-data-list__icon"
+                    viewBox="0 0 48 48"
+                    aria-hidden="true"
+                  >
+                    <circle cx="24" cy="10" r="4" />
+                    <circle cx="14" cy="26" r="4" />
+                    <circle cx="34" cy="26" r="4" />
+                    <path
+                      d="M24 14v6M24 20 14 22M24 20l10 2M6 40c0-5 4-8 8-8s8 3 8 8M26 40c0-5 4-8 8-8s8 3 8 8"
+                    />
+                  </svg>
+                  <p class="c-data-list__label">従業員数</p>
+                  <p class="c-data-list__value">
+                    <small>約</small>30<small>名</small>
+                  </p>
+                </li>
+              </ul>
+
+              <p class="p-about__text">
+                岩手県花巻市にある光学レンズ研磨工場。<br />
+                最大Φ135の量産加工、面精度λ/10の加工実績があります。<br
+                  class="u-hidden-sp"
+                />
+                人と仕組みで工程品質を支え、工場全体で高精度と安定品質を実現しています。
+              </p>
+            </div>
+          </div>
+
+          <p class="c-scroll-sign p-about__scroll" aria-hidden="true">SCROLL</p>
+        </section>
+      </div>
+
+      <!-- ========== SKILL ========== -->
+      <section
+        class="c-split c-split--panel-dark"
+        id="skill"
+        aria-labelledby="skill-heading"
+      >
+        <div class="c-split__body js-inview u-slide-left-sp">
+          <h2 class="c-section-title" id="skill-heading">
+            <span class="c-section-title__en">SKILL</span>
+            <span class="c-section-title__ja">技能 / 能力</span>
+          </h2>
+          <p class="c-split__subtitle">精度を支える<em>加工工程</em></p>
+          <p class="c-split__text">
+            材料のレンズが、どのような工程を経て光学部品へ仕上がるのか。
+            品質を支える各加工工程をご紹介します。
+          </p>
+          <a class="c-button" href="skill.html">詳しく見る</a>
+        </div>
+        <div class="c-split__media js-inview u-fade-left">
+          <div class="c-photo-swap">
+            <picture>
+              <!-- SP 専用画像 -->
+              <source
+                media="(max-width: 767px)"
+                srcset="images/top/skill-sp.png"
+              />
+              <img
+                class="c-photo-swap__img"
+                src="images/top/skill-mono.png"
+                alt="研磨中の光学レンズ"
+                width="1500"
+                height="731"
+                loading="lazy"
+              />
+            </picture>
+            <img
+              class="c-photo-swap__img c-photo-swap__img--color"
+              src="images/top/skill-color.png"
+              alt=""
+              width="1500"
+              height="731"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== FACILITY ========== -->
+      <section
+        class="c-split c-split--reverse c-split--light"
+        id="facility"
+        aria-labelledby="facility-heading"
+      >
+        <div class="c-split__body js-inview u-slide-left-sp">
+          <h2 class="c-section-title" id="facility-heading">
+            <span class="c-section-title__en">FACILITY</span>
+            <span class="c-section-title__ja">設備一覧</span>
+          </h2>
+          <p class="c-split__subtitle">加工<em>設備</em></p>
+          <p class="c-split__text">
+            各工程で使用している設備を、写真や仕様とともにご紹介します。<br
+              class="u-hidden-sp"
+            />
+            設備だけでなく、品質を支える加工環境も掲載しています。
+          </p>
+          <a class="c-button" href="facility.html">詳しく見る</a>
+        </div>
+        <div class="c-split__media js-inview u-fade-right">
+          <div class="c-photo-swap">
+            <picture>
+              <!-- SP 専用画像 -->
+              <source
+                media="(max-width: 767px)"
+                srcset="images/top/facility-sp.png"
+              />
+              <img
+                class="c-photo-swap__img"
+                src="images/top/facility-mono.png"
+                alt="加工設備が並ぶ工場内"
+                width="1960"
+                height="731"
+                loading="lazy"
+              />
+            </picture>
+            <img
+              class="c-photo-swap__img c-photo-swap__img--color"
+              src="images/top/facility-color.png"
+              alt=""
+              width="1960"
+              height="731"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== COMPANY ========== -->
+      <section
+        class="c-split c-split--panel-gray"
+        id="company"
+        aria-labelledby="company-heading"
+      >
+        <div class="c-split__body js-inview u-slide-left-sp">
+          <h2 class="c-section-title" id="company-heading">
+            <span class="c-section-title__en">COMPANY</span>
+            <span class="c-section-title__ja">会社概要</span>
+          </h2>
+          <p class="c-split__subtitle">沿革・代表<em>挨拶</em></p>
+          <p class="c-split__text">
+            会社概要や沿革、代表挨拶を掲載しています。<br class="u-hidden-sp" />
+            久保田光学の歩みや考え方をご紹介します。
+          </p>
+          <a class="c-button" href="company.html">詳しく見る</a>
+        </div>
+        <div class="c-split__media js-inview u-fade-left">
+          <div class="c-photo-swap">
+            <picture>
+              <!-- SP 専用画像 -->
+              <source
+                media="(max-width: 767px)"
+                srcset="images/top/company-sp.png"
+              />
+              <img
+                class="c-photo-swap__img"
+                src="images/top/company-mono.png"
+                alt="久保田光学の社屋外観"
+                width="1532"
+                height="731"
+                loading="lazy"
+              />
+            </picture>
+            <img
+              class="c-photo-swap__img c-photo-swap__img--color"
+              src="images/top/company-color.png"
+              alt=""
+              width="1532"
+              height="731"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== RECRUIT ========== -->
+      <section
+        class="c-split c-split--reverse c-split--white"
+        id="recruit"
+        aria-labelledby="recruit-heading"
+      >
+        <div class="c-split__body js-inview u-slide-left-sp">
+          <h2 class="c-section-title" id="recruit-heading">
+            <span class="c-section-title__en">RECRUIT</span>
+            <span class="c-section-title__ja">採用情報</span>
+          </h2>
+          <p class="c-split__subtitle">
+            <span class="u-inline-block">ものづくりを磨く<em>仲間</em>を</span
+            ><br class="u-hidden-pc" /><span class="u-inline-block"
+              >募集しています</span
+            >
+          </p>
+          <p class="c-split__text">
+            経験は問いません。<br class="u-hidden-pc" /><span
+              class="u-hidden-sp"
+              >実際の仕事を見ながら、</span
+            >一歩ずつ技術を身につけられます。<span class="u-hidden-sp"
+              ><br />
+              「どんな仕事をしているの？」「職場の雰囲気を見てみたい」そんなお問い合わせや工場見学も歓迎しています。</span
+            >
+          </p>
+          <a class="c-button" href="recruit.html">詳しく見る</a>
+        </div>
+        <div class="c-split__media js-inview u-fade-right">
+          <div class="c-photo-swap">
+            <picture>
+              <!-- SP 専用画像 -->
+              <source
+                media="(max-width: 767px)"
+                srcset="images/top/recruit-sp.png"
+              />
+              <img
+                class="c-photo-swap__img"
+                src="images/top/recruit-mono.png"
+                alt="工場で働く社員たち"
+                width="1975"
+                height="731"
+                loading="lazy"
+              />
+            </picture>
+            <img
+              class="c-photo-swap__img c-photo-swap__img--color"
+              src="images/top/recruit-color.png"
+              alt=""
+              width="1975"
+              height="731"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== INTERVIEW ========== -->
+      <section
+        class="c-split c-split--panel-dark"
+        id="interview"
+        aria-labelledby="interview-heading"
+      >
+        <div class="c-split__body js-inview u-slide-left-sp">
+          <h2 class="c-section-title" id="interview-heading">
+            <span class="c-section-title__en">INTERVIEW</span>
+            <span class="c-section-title__ja">社員紹介</span>
+          </h2>
+          <p class="c-split__subtitle">インタビュー<em>掲載</em></p>
+          <p class="c-split__text">
+            実際に働く社員のインタビューを掲載しています。
+          </p>
+          <a class="c-button" href="interview.html">詳しく見る</a>
+        </div>
+        <div class="c-split__media js-inview u-fade-left">
+          <div class="c-photo-swap">
+            <picture>
+              <!-- SP 専用画像 -->
+              <source
+                media="(max-width: 767px)"
+                srcset="images/top/interview-sp.png"
+              />
+              <img
+                class="c-photo-swap__img"
+                src="images/top/interview-mono.png"
+                alt="測定器でレンズを確認する社員"
+                width="1525"
+                height="731"
+                loading="lazy"
+              />
+            </picture>
+            <img
+              class="c-photo-swap__img c-photo-swap__img--color"
+              src="images/top/interview-color.png"
+              alt=""
+              width="1525"
+              height="731"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== CONTACT ========== -->
+      <section
+        class="p-top-contact"
+        id="contact"
+        aria-labelledby="contact-heading"
+      >
+        <div class="p-top-contact__inner l-inner">
+          <div class="p-top-contact__body">
+            <h2 class="c-icon-title" id="contact-heading">
+              <svg
+                class="c-icon-title__icon"
+                viewBox="0 0 48 32"
+                aria-hidden="true"
+              >
+                <rect x="1" y="1" width="46" height="30" />
+                <path d="m1 1 23 17L47 1M1 31l17-16M47 31 30 15" />
+              </svg>
+              お問い合わせ
+            </h2>
+            <p class="p-top-contact__lead">
+              短納期や加工内容についてのご相談も可能<br
+                class="u-hidden-pc"
+              />です。
+            </p>
+            <p class="p-top-contact__text">
+              仕事のご依頼、ご相談、お見積り、採用情報などお気軽にお問い合わせください。
+            </p>
+            <a class="c-cta-button" href="contact.html">
+              <span class="c-cta-button__label">CONTACT</span>
+              <span class="c-cta-button__text">相談する</span>
+            </a>
+          </div>
+
+          <div class="p-top-contact__sns">
+            <ul class="c-banner-list c-banner-list--stagger" role="list">
+              <li class="c-banner-list__item js-inview u-fade-up">
+                <a
+                  class="c-banner"
+                  href="https://note.com/kubota_optical"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <picture>
+                    <!-- SP 専用画像 -->
+                    <source
+                      media="(max-width: 767px)"
+                      srcset="images/top/banner-note-sp.png"
+                    />
+                    <img
+                      class="c-banner__img"
+                      src="images/top/banner-note.png"
+                      alt="note｜久保田光学の公式note"
+                      width="1282"
+                      height="535"
+                      loading="lazy"
+                    />
+                  </picture>
+                </a>
+              </li>
+              <li
+                class="c-banner-list__item js-inview u-fade-up"
+                style="--delay: 0.15s"
+              >
+                <a
+                  class="c-banner"
+                  href="https://www.instagram.com/kubota_optics/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <picture>
+                    <!-- SP 専用画像 -->
+                    <source
+                      media="(max-width: 767px)"
+                      srcset="images/top/banner-instagram-sp.png"
+                    />
+                    <img
+                      class="c-banner__img"
+                      src="images/top/banner-instagram.png"
+                      alt="Instagram｜久保田光学の公式インスタグラム"
+                      width="1282"
+                      height="535"
+                      loading="lazy"
+                    />
+                  </picture>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ========== フッター ========== -->
+    <footer class="l-footer">
+      <div class="l-footer__inner l-inner">
+        <div class="l-footer__info">
+          <p class="l-footer__name">株式会社 久保田光学</p>
+          <address class="l-footer__address">
+            岩手県花巻市湯口字二ツ堰13-3
+          </address>
+        </div>
+        <nav class="l-footer__nav" aria-label="フッターナビゲーション">
+          <ul class="c-nav c-nav--sub" role="list">
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="index.html">HOME</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="skill.html">SKILL</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="facility.html">FACILITY</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="company.html">COMPANY</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="contact.html">CONTACT</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="recruit.html">RECRUIT</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="interview.html">INTERVIEW</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <p class="l-footer__copy"><small>&copy; KUBOTA OPTICS.</small></p>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

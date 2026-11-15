@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>SKILL 技能・能力｜株式会社 久保田光学</title>
+    <meta
+      name="description"
+      content="久保田光学の加工工程（CG・ペレット・研磨・芯取・洗浄検査）と、最大加工径Φ135mm・月産40,000枚の生産体制をご紹介します。"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- ========== ヘッダー（常に追従） ========== -->
+    <header class="l-header js-header">
+      <div class="l-header__inner">
+        <a class="l-header__logo" href="index.html">株式会社 久保田光学</a>
+
+        <button
+          class="c-hamburger js-hamburger"
+          type="button"
+          aria-controls="global-nav"
+          aria-expanded="false"
+          aria-label="メニューを開く"
+        >
+          <span class="c-hamburger__line"></span>
+        </button>
+
+        <nav
+          class="l-header__nav js-drawer"
+          id="global-nav"
+          aria-label="グローバルナビゲーション"
+        >
+          <ul class="c-nav" role="list">
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="index.html">HOME</a>
+            </li>
+            <li class="c-nav__item">
+              <a
+                class="c-nav__link is-current"
+                href="skill.html"
+                aria-current="page"
+                >SKILL</a
+              >
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="facility.html">FACILITY</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="company.html">COMPANY</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="contact.html">CONTACT</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="recruit.html">RECRUIT</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="interview.html">INTERVIEW</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="l-main">
+      <!-- ========== 下層ページ KV ========== -->
+      <div class="c-page-hero">
+        <img
+          class="c-page-hero__img"
+          src="images/skill/hero.png"
+          alt=""
+          width="2150"
+          height="494"
+        />
+        <div class="c-page-hero__inner">
+          <h1 class="c-page-hero__title">
+            <span class="c-page-hero__en">SKILL</span>
+            <span class="c-page-hero__ja">技能 / 能力</span>
+          </h1>
+        </div>
+        <p class="c-scroll-sign c-page-hero__scroll" aria-hidden="true">SCROLL</p>
+      </div>
+
+      <!-- ========== 加工工程（導入＋数値） ========== -->
+      <section class="c-intro" aria-labelledby="process-heading">
+        <div class="c-intro__inner">
+          <h2 class="c-intro__title" id="process-heading">加工工程</h2>
+          <div class="c-intro__text">
+            <p>加工径は最大Φ135、面精度λ/10、摩耗度400、研磨角30°前後まで対応しています。</p>
+            <p>月産約4万枚の生産体制を整え、1部番では月産最大10,000枚の量産実績があります。</p>
+            <p>硝材入荷後、約1か月半を目安に生産しています。</p>
+            <p>最終検査だけに頼らず、各工程に品質基準を設け、工場全体で高精度と安定した品質を支えています。</p>
+          </div>
+          <figure class="c-intro__figure">
+            <img
+              src="images/skill/stats.png"
+              alt="最大加工径 Φ135mm／摩耗度 400／月産能力 40,000枚"
+              width="1265"
+              height="357"
+            />
+          </figure>
+        </div>
+      </section>
+
+      <!-- ========== 工程（写真枠フェードイン → 文字を後から表示） ========== -->
+      <ol class="c-process-list" role="list">
+        <li class="c-process js-inview">
+          <div class="c-process__head">
+            <h3 class="c-process__title">CG</h3>
+            <p class="c-process__sub">粗加工</p>
+          </div>
+          <div class="c-process__body">
+            <div class="c-process__media" style="--photo-ratio: 1224 / 1253">
+              <picture>
+                <!-- SP 専用画像（番号・線は描き込み済み） -->
+                <source
+                  media="(max-width: 1023px)"
+                  srcset="images/skill/process-01-sp.png"
+                  width="1224"
+                  height="1253"
+                />
+                <img
+                  class="c-process__img"
+                  src="images/skill/process-01.png"
+                  alt=""
+                  width="2000"
+                  height="519"
+                  loading="lazy"
+                />
+              </picture>
+            </div>
+            <p class="c-process__text">
+              CG工程では、後工程の品質を左右する基礎形状を加工します。加工後は、ダイヤ加工による粗さが残っていないか鉛筆を使用した表面検査を実施しています。また、次工程での加工取り代を考慮し、肉厚は前後±0.05mmで管理しています。RについてはΔh管理を行い、必要な加工条件を安定させることで、後工程での品質ばらつきを抑えています。
+            </p>
+          </div>
+        </li>
+
+        <li class="c-process c-process--reverse js-inview">
+          <div class="c-process__head">
+            <h3 class="c-process__title">ペレット 工程</h3>
+            <p class="c-process__sub">成形加工</p>
+          </div>
+          <div class="c-process__body">
+            <div class="c-process__media" style="--photo-ratio: 1101 / 1253">
+              <picture>
+                <!-- SP 専用画像（番号・線は描き込み済み） -->
+                <source
+                  media="(max-width: 1023px)"
+                  srcset="images/skill/process-02-sp.png"
+                  width="1101"
+                  height="1253"
+                />
+                <img
+                  class="c-process__img"
+                  src="images/skill/process-02.png"
+                  alt=""
+                  width="2000"
+                  height="519"
+                  loading="lazy"
+                />
+              </picture>
+            </div>
+            <p class="c-process__text">
+              ダイヤモンドペレット・レジンペレットを使用し、R精度や外観品質をより高いレベルへ仕上げていきます。加工後は表面の透明度が向上し、肉厚精度は±0.02mmで管理しています。R精度はニュートン原器による干渉縞で確認し、図面基準の下限から-0.05μmを目安に管理しています。管理基準を設けながら精度を積み重ねることで、後工程の安定加工と品質安定につなげています。
+            </p>
+          </div>
+        </li>
+
+        <li class="c-process js-inview">
+          <div class="c-process__head">
+            <h3 class="c-process__title">研磨 工程</h3>
+            <p class="c-process__sub">精密研磨</p>
+          </div>
+          <div class="c-process__body">
+            <div class="c-process__media" style="--photo-ratio: 1085 / 1253">
+              <picture>
+                <!-- SP 専用画像（番号・線は描き込み済み） -->
+                <source
+                  media="(max-width: 1023px)"
+                  srcset="images/skill/process-03-sp.png"
+                  width="1085"
+                  height="1253"
+                />
+                <img
+                  class="c-process__img"
+                  src="images/skill/process-03.png"
+                  alt=""
+                  width="2000"
+                  height="519"
+                  loading="lazy"
+                />
+              </picture>
+            </div>
+            <p class="c-process__text">
+              研磨工程は「砂目ぬき」「面出し」「仕上げ」の3工程で構成されています。砂目ぬきでは高圧加工により前工程の表面粗さを除去し、面出しでは低圧加工によって加工時に発生するアス・クセを修正します。仕上げ工程では、表面の汚れやヤケ、微細な傷を除去しています。各工程の役割と加工条件を最適化することで、面形状や外観品質のばらつきを抑え、高精度な製品を安定して生産しています。
+            </p>
+          </div>
+        </li>
+
+        <li class="c-process c-process--reverse js-inview">
+          <div class="c-process__head">
+            <h3 class="c-process__title">芯取 工程</h3>
+            <p class="c-process__sub">芯出し・基準合わせ</p>
+          </div>
+          <div class="c-process__body">
+            <div class="c-process__media" style="--photo-ratio: 1224 / 1253">
+              <picture>
+                <!-- SP 専用画像（番号・線は描き込み済み） -->
+                <source
+                  media="(max-width: 1023px)"
+                  srcset="images/skill/process-04-sp.png"
+                  width="1224"
+                  height="1253"
+                />
+                <img
+                  class="c-process__img"
+                  src="images/skill/process-04.png"
+                  alt=""
+                  width="2000"
+                  height="519"
+                  loading="lazy"
+                />
+              </picture>
+            </div>
+            <p class="c-process__text">
+              芯取工程では、Z係数に応じてチャッキング条件を設定し、ピック測定による芯出しを行ったうえで加工を実施しています。加工条件と測定結果を確認しながら偏芯量を管理し、製品ごとのばらつきを抑えることで、安定した製品品質につなげています。
+            </p>
+          </div>
+        </li>
+
+        <li class="c-process js-inview">
+          <div class="c-process__head">
+            <h3 class="c-process__title">洗浄・検査</h3>
+            <p class="c-process__sub">品質保証</p>
+          </div>
+          <div class="c-process__body">
+            <div class="c-process__media" style="--photo-ratio: 1222 / 1253">
+              <picture>
+                <!-- SP 専用画像（番号・線は描き込み済み） -->
+                <source
+                  media="(max-width: 1023px)"
+                  srcset="images/skill/process-05-sp.png"
+                  width="1222"
+                  height="1253"
+                />
+                <img
+                  class="c-process__img"
+                  src="images/skill/process-05.png"
+                  alt=""
+                  width="2000"
+                  height="519"
+                  loading="lazy"
+                />
+              </picture>
+            </div>
+            <p class="c-process__text">
+              洗浄液のフィルタリングやIPAの比重管理を行い、安定した洗浄環境を維持しています。洗浄後は、1点ずつ目視検査を行い、キズ規格に合わせた確認を実施しています。最終検査だけに頼るのではなく、各工程で品質を積み重ねることで、高精度かつ安定した製品づくりにつなげています。
+            </p>
+          </div>
+        </li>
+      </ol>
+
+      <!-- ========== メッセージバナー（スクロールで画像が出てくる） ========== -->
+      <section class="c-message-banner js-inview u-fade-up">
+        <!-- 文字入り画像。テキストは読み上げ・検索用に HTML でも残す -->
+        <picture>
+          <!-- SP 専用画像 -->
+          <source
+            media="(max-width: 767px)"
+            srcset="images/skill/message-sp.png"
+            width="1965"
+            height="822"
+          />
+          <img
+            class="c-message-banner__img"
+            src="images/skill/message.png"
+            alt=""
+            width="2000"
+            height="400"
+            loading="lazy"
+          />
+        </picture>
+        <div class="c-message-banner__body">
+          <h2 class="c-message-banner__catch">
+            <span class="u-inline-block">一つひとつの工程を、</span><span class="u-inline-block">確かな技術で積み重ねる</span><br />
+            <em class="c-message-banner__accent">それが私たちの仕事です。</em>
+          </h2>
+          <p class="c-message-banner__text">
+            各工程でしっかりとした基準で仕上げるからこそ、高品質な製品へと仕上げています。
+          </p>
+        </div>
+      </section>
+
+      <!-- ========== お問い合わせ＋SNS ========== -->
+      <section class="c-contact-band" aria-labelledby="contact-heading">
+        <div class="c-contact-band__body">
+          <h2 class="c-section-title c-section-title--light" id="contact-heading">
+            <span class="c-section-title__en">CONTACT</span>
+            <span class="c-section-title__ja">お問い合わせ</span>
+          </h2>
+          <p class="c-contact-band__lead">
+            <span class="u-inline-block">短納期や加工内容についての</span><span class="u-inline-block">ご相談も可能です。</span>
+          </p>
+          <p class="c-contact-band__text">
+            <span class="u-inline-block">仕事のご依頼、ご相談、お見積りなど</span><span class="u-inline-block">お気軽にお問い合わせください。</span>
+          </p>
+          <a class="c-button c-button--light c-contact-band__button" href="contact.html"
+            >お問い合わせはこちら</a
+          >
+        </div>
+
+        <div class="c-contact-band__sns">
+          <ul class="c-banner-list c-banner-list--row" role="list">
+            <li class="c-banner-list__item js-inview u-fade-up">
+              <a
+                class="c-banner"
+                href="https://note.com/kubota_optical"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <picture>
+                  <!-- SP 専用画像 -->
+                  <source
+                    media="(max-width: 767px)"
+                    srcset="images/top/banner-note-sp.png"
+                  />
+                  <img
+                    class="c-banner__img"
+                    src="images/top/banner-note.png"
+                    alt="note｜久保田光学の公式note"
+                    width="1282"
+                    height="535"
+                    loading="lazy"
+                  />
+                </picture>
+              </a>
+            </li>
+            <li
+              class="c-banner-list__item js-inview u-fade-up"
+              style="--delay: 0.15s"
+            >
+              <a
+                class="c-banner"
+                href="https://www.instagram.com/kubota_optics/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <picture>
+                  <!-- SP 専用画像 -->
+                  <source
+                    media="(max-width: 767px)"
+                    srcset="images/top/banner-instagram-sp.png"
+                  />
+                  <img
+                    class="c-banner__img"
+                    src="images/top/banner-instagram.png"
+                    alt="Instagram｜久保田光学の公式インスタグラム"
+                    width="1282"
+                    height="535"
+                    loading="lazy"
+                  />
+                </picture>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <!-- ========== フッター ========== -->
+    <footer class="l-footer">
+      <div class="l-footer__inner l-inner">
+        <div class="l-footer__info">
+          <p class="l-footer__name">株式会社 久保田光学</p>
+          <address class="l-footer__address">
+            岩手県花巻市湯口字二ツ堰13-3
+          </address>
+        </div>
+        <nav class="l-footer__nav" aria-label="フッターナビゲーション">
+          <ul class="c-nav c-nav--sub" role="list">
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="index.html">HOME</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="skill.html">SKILL</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="facility.html">FACILITY</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="company.html">COMPANY</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="contact.html">CONTACT</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="recruit.html">RECRUIT</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="interview.html">INTERVIEW</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <p class="l-footer__copy"><small>&copy; KUBOTA OPTICS.</small></p>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

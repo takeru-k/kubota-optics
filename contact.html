@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CONTACT お問い合わせ｜株式会社 久保田光学</title>
+    <meta
+      name="description"
+      content="株式会社久保田光学へのお問い合わせ。ご質問・ご相談、お見積もりなど、お電話またはメールフォームからお気軽にお問い合わせください。"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- ========== ヘッダー（常に追従） ========== -->
+    <header class="l-header js-header">
+      <div class="l-header__inner">
+        <a class="l-header__logo" href="index.html">株式会社 久保田光学</a>
+
+        <button
+          class="c-hamburger js-hamburger"
+          type="button"
+          aria-controls="global-nav"
+          aria-expanded="false"
+          aria-label="メニューを開く"
+        >
+          <span class="c-hamburger__line"></span>
+        </button>
+
+        <nav
+          class="l-header__nav js-drawer"
+          id="global-nav"
+          aria-label="グローバルナビゲーション"
+        >
+          <ul class="c-nav" role="list">
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="index.html">HOME</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="skill.html">SKILL</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="facility.html">FACILITY</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="company.html">COMPANY</a>
+            </li>
+            <li class="c-nav__item">
+              <a
+                class="c-nav__link is-current"
+                href="contact.html"
+                aria-current="page"
+                >CONTACT</a
+              >
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="recruit.html">RECRUIT</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="interview.html">INTERVIEW</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="l-main">
+      <!-- ========== 下層ページ KV ========== -->
+      <div class="c-page-hero">
+        <img
+          class="c-page-hero__img"
+          src="images/contact/hero.png"
+          alt=""
+          width="2150"
+          height="494"
+        />
+        <div class="c-page-hero__inner">
+          <h1 class="c-page-hero__title">
+            <span class="c-page-hero__en">CONTACT</span>
+            <span class="c-page-hero__ja">お問い合わせ</span>
+          </h1>
+        </div>
+        <p class="c-scroll-sign c-page-hero__scroll" aria-hidden="true">SCROLL</p>
+      </div>
+
+      <!-- ========== 電話・メールフォーム ========== -->
+      <section class="p-contact" aria-labelledby="contact-lead">
+        <h2 class="c-lead p-contact__lead" id="contact-lead">
+          <span class="u-inline-block">ご質問・ご相談、お見積もりなど、</span><span class="u-inline-block">お気軽にお問い合わせください。</span>
+        </h2>
+
+        <!-- 電話 -->
+        <div class="c-tel-box">
+          <p class="c-tel-box__lead">
+            お急ぎの方は<br class="u-hidden-sp" />お電話ください
+          </p>
+          <p class="c-tel-box__body">
+            <a class="c-tel-box__number" href="tel:0198284155">TEL 0198-28-4155</a>
+            <span class="c-tel-box__note">受付時間(営業日) 9:00〜17:30</span>
+          </p>
+        </div>
+
+        <!-- メールフォーム -->
+        <div class="p-contact__form">
+          <div class="p-contact__intro">
+            <p>メールでのお問い合わせは、下記フォームへ必要事項をご記入いただき送信してください。</p>
+            <p>
+              または「<a class="c-text-link" href="mailto:uccc@rnac.ne.jp">uccc@rnac.ne.jp</a>」まで直接お問い合わせください。
+            </p>
+          </div>
+
+          <!-- 送信先（action）はサーバー側の送信プログラムに合わせて設定してください -->
+          <form
+            class="c-form js-form"
+            action="#"
+            method="post"
+            enctype="multipart/form-data"
+            novalidate
+          >
+            <div class="c-form__field">
+              <label class="c-form__label c-form__label--required" for="contact-name"
+                >お名前 または 会社名</label
+              >
+              <input
+                class="c-form__input"
+                id="contact-name"
+                name="name"
+                type="text"
+                autocomplete="name"
+                required
+              />
+              <p class="c-form__error" id="contact-name-error" aria-live="polite"></p>
+            </div>
+
+            <div class="c-form__field">
+              <label class="c-form__label c-form__label--required" for="contact-email"
+                >メールアドレス</label
+              >
+              <input
+                class="c-form__input"
+                id="contact-email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                inputmode="email"
+                required
+              />
+              <p class="c-form__error" id="contact-email-error" aria-live="polite"></p>
+            </div>
+
+            <div class="c-form__field">
+              <label class="c-form__label" for="contact-tel">電話番号</label>
+              <input
+                class="c-form__input"
+                id="contact-tel"
+                name="tel"
+                type="tel"
+                autocomplete="tel"
+                inputmode="tel"
+              />
+            </div>
+
+            <div class="c-form__field">
+              <label class="c-form__label c-form__label--required" for="contact-message"
+                >お問い合わせ内容</label
+              >
+              <textarea
+                class="c-form__input c-form__input--textarea"
+                id="contact-message"
+                name="message"
+                rows="8"
+                required
+              ></textarea>
+              <p class="c-form__error" id="contact-message-error" aria-live="polite"></p>
+              <p class="c-form__note c-form__label--required">必須項目</p>
+            </div>
+
+            <div class="c-form__field">
+              <p class="c-form__label" id="contact-file-label">
+                添付ファイル（5MB以内、jpg/png/pdf が添付可能です）
+              </p>
+              <div class="c-file">
+                <label class="c-file__button">
+                  ファイルを選択
+                  <input
+                    class="c-file__input js-file-input"
+                    name="file"
+                    type="file"
+                    accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png,application/pdf"
+                    data-max-size="5242880"
+                    aria-labelledby="contact-file-label"
+                    aria-describedby="contact-file-name"
+                  />
+                </label>
+                <span class="c-file__name" id="contact-file-name" aria-live="polite"
+                  >選択されていません</span
+                >
+              </div>
+              <p class="c-form__error" id="contact-file-error" aria-live="polite"></p>
+            </div>
+
+            <div class="c-form__agree">
+              <label class="c-checkbox">
+                <input class="c-checkbox__input" id="contact-agree" name="agree" type="checkbox" required />
+                <span class="c-checkbox__text"
+                  ><a class="c-text-link" href="privacy.html" target="_blank" rel="noopener"
+                    >プライバシーポリシー</a
+                  >に同意する</span
+                >
+              </label>
+              <p class="c-form__error" id="contact-agree-error" aria-live="polite"></p>
+            </div>
+
+            <div class="c-form__submit">
+              <button class="c-submit-button" type="submit">この内容で送信する</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- ========== 採用への導線＋SNS ========== -->
+      <section class="c-recruit-band" aria-labelledby="recruit-band-heading">
+        <div class="c-recruit-band__body">
+          <h2 class="c-recruit-band__title" id="recruit-band-heading">
+            <span class="c-recruit-band__line">一緒に働いて</span>
+            <span class="c-recruit-band__line c-recruit-band__line--shift">みませんか？</span>
+          </h2>
+          <p class="c-recruit-band__text">
+            ものづくりを通じて人と社会を支える仕事。<br />
+            わたしたちと共に成長できる仕事をしませんか？
+          </p>
+        </div>
+
+        <img
+          class="c-recruit-band__img js-inview u-fade-right"
+          src="images/common/recruit-band.png"
+          alt="久保田光学で働くスタッフ"
+          width="1190"
+          height="637"
+          loading="lazy"
+        />
+
+        <a class="c-split-button c-recruit-band__button" href="recruit.html">
+          <span class="c-split-button__label">採用情報はこちら</span>
+          <span class="c-split-button__action">確認する</span>
+        </a>
+
+        <div class="c-recruit-band__sns">
+            <ul class="c-banner-list" role="list">
+              <li class="c-banner-list__item js-inview u-fade-up">
+                <a
+                  class="c-banner"
+                  href="https://note.com/kubota_optical"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <picture>
+                    <!-- SP 専用画像 -->
+                    <source
+                      media="(max-width: 767px)"
+                      srcset="images/top/banner-note-sp.png"
+                    />
+                    <img
+                      class="c-banner__img"
+                      src="images/top/banner-note.png"
+                      alt="note｜久保田光学の公式note"
+                      width="1282"
+                      height="535"
+                      loading="lazy"
+                    />
+                  </picture>
+                </a>
+              </li>
+              <li
+                class="c-banner-list__item js-inview u-fade-up"
+                style="--delay: 0.15s"
+              >
+                <a
+                  class="c-banner"
+                  href="https://www.instagram.com/kubota_optics/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <picture>
+                    <!-- SP 専用画像 -->
+                    <source
+                      media="(max-width: 767px)"
+                      srcset="images/top/banner-instagram-sp.png"
+                    />
+                    <img
+                      class="c-banner__img"
+                      src="images/top/banner-instagram.png"
+                      alt="Instagram｜久保田光学の公式インスタグラム"
+                      width="1282"
+                      height="535"
+                      loading="lazy"
+                    />
+                  </picture>
+                </a>
+              </li>
+            </ul>
+        </div>
+      </section>
+    </main>
+
+    <!-- ========== フッター ========== -->
+    <footer class="l-footer">
+      <div class="l-footer__inner l-inner">
+        <div class="l-footer__info">
+          <p class="l-footer__name">株式会社 久保田光学</p>
+          <address class="l-footer__address">
+            岩手県花巻市湯口字二ツ堰13-3
+          </address>
+        </div>
+        <nav class="l-footer__nav" aria-label="フッターナビゲーション">
+          <ul class="c-nav c-nav--sub" role="list">
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="index.html">HOME</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="skill.html">SKILL</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="facility.html">FACILITY</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="company.html">COMPANY</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="contact.html">CONTACT</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="recruit.html">RECRUIT</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="interview.html">INTERVIEW</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <p class="l-footer__copy"><small>&copy; KUBOTA OPTICS.</small></p>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

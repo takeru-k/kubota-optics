@@ -1,0 +1,4830 @@
+/*-------------------------
+  リセット
+-------------------------*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+img,
+picture {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  font: inherit;
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  display: none;
+}
+
+input[type="submit"],
+input[type="button"],
+label,
+button,
+select {
+  cursor: pointer;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+ul,
+ol,
+dd {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/*-------------------------
+  基本設定
+-------------------------*/
+
+:root {
+  /* カラー */
+  --color-main: #4a78c0;
+  --color-main-dark: #1f4f9a;
+  --color-dark: #231815;
+  --color-charcoal: #3e3a39;
+  --color-gray: #dcdddd;
+  --color-main-light: #bcd3ec;
+  --color-main-bright: #3b82c5;
+  --color-sub: #a9876d;
+  --color-accent: #660d1f;
+  --color-bg: #f9f9f9;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-font: #424242;
+  --color-border: #ececec;
+  --color-link: #337ab7;
+
+  /* タイポグラフィ */
+  --font-base:
+    "Noto Sans JP", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ,
+    Meiryo, "Arial", sans-serif;
+
+  /* スペーシング */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 40px;
+  --spacing-2xl: 80px;
+
+  /* 角丸 */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* ヘッダー高さ（scroll-margin-top と連動） */
+  --header-height: 60px;
+
+  /* トランジション */
+  --transition-speed: 0.4s;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* 重なり順 */
+  --z-logo: 50;
+  --z-header: 100;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --header-height: 80px;
+  }
+}
+
+:where(html) {
+  font-family: var(--font-base);
+  font-weight: 500;
+  color: var(--color-font);
+  line-height: 1.5;
+}
+
+:where(h1, h2, h3) {
+  letter-spacing: 0.04em;
+  font-feature-settings: "palt";
+}
+
+:where(p) {
+  line-height: 1.75;
+}
+
+:where(img) {
+  object-fit: cover;
+}
+
+/*-------------------------
+  レイアウト調整
+-------------------------*/
+
+.l-inner {
+  max-width: 1280px;
+  padding-inline: var(--inner-padding);
+  margin: 0 auto;
+}
+
+.l-block {
+  margin: 80px 0;
+  position: relative;
+  scroll-margin-top: var(--header-height);
+}
+
+@media (min-width: 1024px) {
+  .l-block {
+    margin: 140px 0;
+  }
+}
+
+.l-block--background {
+  background-color: var(--color-bg);
+  padding: 40px 0;
+}
+
+@media (min-width: 1024px) {
+  .l-block--background {
+    padding: 80px 0;
+  }
+}
+
+/* ロゴ（KUBOTA OPTICS.）のサイズは KV と ABOUT のスペースで共有する */
+:root {
+  --logo-font-size: min(17vw, 112px);
+  --logo-line-height: 1.08;
+  --logo-height: calc(var(--logo-font-size) * var(--logo-line-height) * 2);
+  --logo-offset: 40px; /* ヘッダー下からロゴまでの余白 */
+  --about-pb: 56px; /* ABOUT 下余白 */
+  --inner-padding: clamp(24px, 6%, 80px); /* .l-inner と追従ロゴで共有 */
+}
+
+@media (min-width: 768px) {
+  :root {
+    --logo-font-size: clamp(64px, 9vw, 112px);
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --logo-offset: 56px;
+    --about-pb: 96px;
+  }
+}
+
+body {
+  background-color: var(--color-gray);
+}
+
+/*=========================================================
+  Layout
+=========================================================*/
+
+/*-------------------------
+  l-main：下層ページは固定ヘッダーの高さぶん下げる
+-------------------------*/
+.l-main {
+  padding-top: var(--header-height);
+  background-color: var(--color-white);
+}
+
+/*-------------------------
+  l-header
+-------------------------*/
+.l-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: var(--z-header);
+  height: var(--header-height);
+  background-color: rgb(35 24 21 / 0.92);
+  color: var(--color-white);
+}
+
+.l-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding-inline: 16px;
+}
+
+@media (min-width: 1024px) {
+  .l-header__inner {
+    padding-inline: 32px;
+  }
+}
+
+.l-header__logo {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+@media (min-width: 1024px) {
+  .l-header__logo {
+    font-size: 18px;
+  }
+}
+
+/* SP：ドロワー */
+.l-header__nav {
+  position: fixed;
+  inset: var(--header-height) 0 0;
+  display: grid;
+  place-items: center;
+  background-color: rgb(35 24 21 / 0.97);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--transition-speed),
+    visibility var(--transition-speed);
+}
+
+.l-header__nav.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.l-header__nav .c-nav {
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  font-size: 16px;
+}
+
+@media (min-width: 1024px) {
+  .l-header__nav {
+    position: static;
+    display: block;
+    background: none;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .l-header__nav .c-nav {
+    flex-direction: row;
+    gap: clamp(16px, 2.2vw, 32px);
+    font-size: 13px;
+  }
+}
+
+/*-------------------------
+  l-footer
+-------------------------*/
+.l-footer {
+  background-color: var(--color-dark);
+  color: var(--color-white);
+  padding-block: 40px 16px;
+}
+
+/* SP：ナビ → 青ライン → 会社情報 */
+.l-footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.l-footer__info {
+  position: relative;
+  order: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 16px;
+  padding-top: 32px;
+}
+
+/* 画面幅いっぱいのグラデーションライン */
+.l-footer__info::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: calc(50% - 50vw);
+  width: 100vw;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--color-main) 0%,
+    var(--color-main-dark) 50%,
+    var(--color-dark) 100%
+  );
+}
+
+@media (min-width: 1024px) {
+  .l-footer__inner {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    line-height: 2;
+  }
+
+  .l-footer__info {
+    order: 0;
+    padding-top: 0;
+  }
+
+  .l-footer__info::before {
+    content: none;
+  }
+
+  /* PC：フッター上端に画面幅いっぱいの青いライン */
+  .l-footer {
+    border-top: 3px solid transparent;
+    border-image: linear-gradient(
+        90deg,
+        var(--color-main) 0%,
+        var(--color-main-dark) 100%
+      )
+      1;
+  }
+}
+
+.l-footer__name {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.l-footer__address {
+  font-size: 14px;
+  font-style: normal;
+  letter-spacing: 0.08em;
+}
+
+.l-footer__copy {
+  margin-top: 32px;
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+}
+
+@media (min-width: 1024px) {
+  .l-footer__name {
+    font-size: 22px;
+  }
+}
+
+/*=========================================================
+  Component
+=========================================================*/
+
+/*-------------------------
+  c-nav：ナビゲーション（ヘッダー / フッター共通）
+-------------------------*/
+.c-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.c-nav__link {
+  transition: color var(--transition-speed);
+}
+
+.c-nav__link:hover,
+.c-nav__link:focus-visible,
+.c-nav__link.is-current {
+  color: var(--color-main);
+}
+
+/* フッター用：SP は大きめ、PC は小さめ */
+.c-nav--sub {
+  gap: 20px 28px;
+  font-size: 14px;
+}
+
+@media (min-width: 1024px) {
+  .c-nav--sub {
+    gap: 12px 20px;
+    font-size: 14px;
+  }
+}
+
+/*-------------------------
+  c-hamburger
+-------------------------*/
+.c-hamburger {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  color: var(--color-white);
+}
+
+.c-hamburger__line,
+.c-hamburger__line::before,
+.c-hamburger__line::after {
+  position: absolute;
+  left: 10px;
+  width: 24px;
+  height: 2px;
+  background-color: currentColor;
+  transition:
+    transform var(--transition-speed),
+    background-color var(--transition-speed);
+}
+
+.c-hamburger__line {
+  top: 21px;
+}
+
+.c-hamburger__line::before,
+.c-hamburger__line::after {
+  content: "";
+  left: 0;
+}
+
+.c-hamburger__line::before {
+  transform: translateY(-8px);
+}
+
+.c-hamburger__line::after {
+  transform: translateY(8px);
+}
+
+.c-hamburger[aria-expanded="true"] .c-hamburger__line {
+  background-color: transparent;
+}
+
+.c-hamburger[aria-expanded="true"] .c-hamburger__line::before {
+  transform: rotate(45deg);
+}
+
+.c-hamburger[aria-expanded="true"] .c-hamburger__line::after {
+  transform: rotate(-45deg);
+}
+
+@media (min-width: 1024px) {
+  .c-hamburger {
+    display: none;
+  }
+}
+
+/*-------------------------
+  c-logo-mark：KUBOTA OPTICS. ロゴ
+  .is-colored で白 → ブランドカラーへ
+-------------------------*/
+.c-logo-mark {
+  font-size: var(--logo-font-size);
+  font-weight: 700;
+  line-height: var(--logo-line-height);
+  letter-spacing: 0.08em;
+  color: var(--color-white);
+}
+
+.c-logo-mark__line {
+  display: block;
+  white-space: nowrap;
+}
+
+/* 上段：白のレイヤーを縮めて下のグラデーションを見せる */
+.c-logo-mark__line--top {
+  width: fit-content;
+  color: transparent;
+  background-image:
+    linear-gradient(var(--color-white), var(--color-white)),
+    linear-gradient(180deg, var(--color-main) 0%, var(--color-main-dark) 100%);
+  background-repeat: no-repeat;
+  background-size:
+    100% 100%,
+    100% 100%;
+  background-position:
+    right,
+    0 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  transition: background-size 0.8s var(--ease-out);
+}
+
+.c-logo-mark__line--bottom,
+.c-logo-mark__dot {
+  transition: color 0.8s var(--ease-out);
+}
+
+.c-logo-mark.is-colored .c-logo-mark__line--top {
+  background-size:
+    0% 100%,
+    100% 100%;
+}
+
+.c-logo-mark.is-colored .c-logo-mark__line--bottom {
+  color: var(--color-dark);
+}
+
+.c-logo-mark.is-colored .c-logo-mark__dot {
+  color: var(--color-main);
+}
+
+/* ロゴを置くための空きスペース */
+.c-logo-space {
+  height: var(--logo-height);
+}
+
+/*-------------------------
+  c-scroll-sign：縦書きSCROLL
+-------------------------*/
+.c-scroll-sign {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .c-scroll-sign {
+    position: absolute;
+    left: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    writing-mode: vertical-rl;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+  }
+
+  /*
+    線：薄いレール（下のレイヤー）の上を、白い線が上から下へ流れ続ける
+    1枚目＝流れる線 / 2枚目＝レール
+  */
+  .c-scroll-sign::after {
+    content: "";
+    width: 1px;
+    height: 64px;
+    background:
+      linear-gradient(currentColor, currentColor) no-repeat,
+      linear-gradient(
+        color-mix(in srgb, currentColor 25%, transparent),
+        color-mix(in srgb, currentColor 25%, transparent)
+      );
+    background-size:
+      100% 0%,
+      100% 100%;
+    animation: c-scroll-sign-line 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  }
+}
+
+/* 上から伸びる → 下へ抜けていく */
+@keyframes c-scroll-sign-line {
+  0% {
+    background-position:
+      0 0,
+      0 0;
+    background-size:
+      100% 0%,
+      100% 100%;
+  }
+
+  50% {
+    background-position:
+      0 0,
+      0 0;
+    background-size:
+      100% 100%,
+      100% 100%;
+  }
+
+  50.1% {
+    background-position:
+      0 100%,
+      0 0;
+  }
+
+  100% {
+    background-position:
+      0 100%,
+      0 0;
+    background-size:
+      100% 0%,
+      100% 100%;
+  }
+}
+
+/* 動きを減らす設定では、線を表示したまま止める */
+@media (prefers-reduced-motion: reduce) {
+  .c-scroll-sign::after {
+    animation: none;
+    background-size:
+      100% 100%,
+      100% 100%;
+  }
+}
+
+/*-------------------------
+  c-section-title：英字＋和文見出し
+-------------------------*/
+.c-section-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 16px;
+}
+
+.c-section-title__en {
+  font-size: clamp(32px, 3.1vw, 56px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  color: var(--color-main);
+}
+
+.c-section-title__ja {
+  font-size: clamp(14px, 1.4vw, 18px);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.c-section-title--light .c-section-title__en {
+  color: var(--color-white);
+}
+
+/*-------------------------
+  c-button：詳しく見る
+-------------------------*/
+.c-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-width: 200px;
+  padding: 14px 24px;
+  border: 1px solid currentColor;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  transition: background-color var(--transition-speed);
+}
+
+/* 矢印（c-cta-button と共通） */
+.c-button::after,
+.c-cta-button__text::after {
+  content: "";
+  flex-shrink: 0;
+  width: 56px;
+  height: 6px;
+  border-right: 1px solid var(--button-arrow, var(--color-main));
+  border-bottom: 1px solid var(--button-arrow, var(--color-main));
+  transform: skewX(60deg);
+  transition: translate var(--transition-speed) var(--ease-out);
+}
+
+@media (min-width: 768px) {
+  .c-button {
+    min-width: 240px;
+    padding: 16px 28px;
+    font-size: 14px;
+  }
+}
+
+.c-button:hover,
+.c-button:focus-visible {
+  background-color: rgb(255 255 255 / 0.08);
+}
+
+.c-button:hover::after,
+.c-button:focus-visible::after,
+.c-cta-button:hover .c-cta-button__text::after,
+.c-cta-button:focus-visible .c-cta-button__text::after {
+  translate: 8px 0;
+}
+
+@media (min-width: 768px) {
+  .c-button::after {
+    width: 72px;
+  }
+}
+
+.c-button--light {
+  --button-arrow: currentColor;
+
+  color: var(--color-white);
+}
+
+/*-------------------------
+  c-cta-button：CONTACT 相談する（SP は横幅いっぱい）
+-------------------------*/
+.c-cta-button {
+  display: flex;
+  align-items: stretch;
+  border: 2px solid var(--color-main);
+  background-color: var(--color-white);
+}
+
+@media (min-width: 768px) {
+  .c-cta-button {
+    display: inline-flex;
+    border-width: 1px;
+  }
+}
+
+.c-cta-button__label {
+  display: grid;
+  flex: 0 0 52%;
+  place-items: center;
+  padding: 12px 32px 12px 16px;
+  background-color: var(--color-main);
+  color: var(--color-white);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 20px) 100%, 0 100%);
+}
+
+@media (min-width: 768px) {
+  .c-cta-button__label {
+    flex-basis: auto;
+    font-size: 16px;
+  }
+}
+
+.c-cta-button__text {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding-inline: 4px 16px;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--color-dark);
+}
+
+.c-cta-button__text::after {
+  width: 40px;
+}
+
+@media (min-width: 768px) {
+  .c-cta-button__text {
+    gap: 16px;
+    padding-inline: 8px 20px;
+  }
+
+  .c-cta-button__text::after {
+    width: 48px;
+  }
+}
+
+/*-------------------------
+  c-icon-title：アイコン付き見出し
+-------------------------*/
+.c-icon-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: clamp(20px, 2vw, 26px);
+  font-weight: 700;
+  color: var(--color-main);
+}
+
+.c-icon-title__icon {
+  width: 48px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+/*-------------------------
+  c-data-list：アイコン付き数値リスト
+-------------------------*/
+.c-data-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.c-data-list__item {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding-inline: 4px;
+  text-align: center;
+}
+
+.c-data-list__item + .c-data-list__item {
+  border-left: 3px solid var(--color-gray);
+}
+
+.c-data-list__icon {
+  width: clamp(28px, 7vw, 40px);
+  height: clamp(28px, 7vw, 40px);
+  fill: none;
+  stroke: #9fa0a0;
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.c-data-list__label {
+  font-size: clamp(10px, 2.8vw, 12px);
+  font-weight: 700;
+  color: var(--color-dark);
+}
+
+.c-data-list__label small {
+  font-size: 0.75em;
+}
+
+.c-data-list__value {
+  font-size: clamp(18px, 4.8vw, 40px);
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
+  color: var(--color-main);
+}
+
+@media (min-width: 768px) {
+  .c-data-list__value {
+    font-size: clamp(24px, 2.8vw, 40px);
+  }
+}
+
+.c-data-list__value small {
+  font-size: 0.5em;
+}
+
+/*-------------------------
+  c-split：斜めパネル＋写真の2カラム
+  修飾子：
+   --reverse     写真を左に配置
+   --panel-dark  グレー地＋濃色パネル
+   --panel-gray  グレー地＋チャコールパネル
+   --light       グレー地（パネルなし）
+   --white       白地（パネルなし）
+-------------------------*/
+.c-split {
+  --split-bg: var(--color-gray);
+  --split-panel: transparent;
+  --split-color: var(--color-dark);
+  --media-shape: polygon(70% 0, 100% 0, 100% 100%, 45% 100%);
+
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  overflow: hidden;
+  background-color: var(--split-bg);
+  color: var(--split-color);
+  scroll-margin-top: var(--header-height);
+}
+
+.c-split::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--split-panel);
+}
+
+.c-split--panel-dark {
+  --split-panel: var(--color-dark);
+  --split-color: var(--color-white);
+}
+
+.c-split--panel-gray {
+  --split-panel: var(--color-charcoal);
+  --split-color: var(--color-white);
+}
+
+.c-split--white {
+  --split-bg: #f0f0f0;
+}
+
+@media (min-width: 768px) {
+  .c-split--white {
+    --split-bg: var(--color-white);
+  }
+}
+
+.c-split__body {
+  padding: 32px 24px 48px 40px;
+}
+
+.c-split__subtitle {
+  margin-top: 24px;
+  font-size: clamp(17px, 1.6vw, 22px);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.c-split__subtitle em {
+  font-style: normal;
+  color: var(--color-main);
+}
+
+.c-split__text {
+  margin-top: 16px;
+  font-size: 12px;
+  line-height: 2;
+  letter-spacing: 0.08em;
+}
+
+.c-split__body .c-button {
+  margin-top: 32px;
+}
+
+/*
+  PC：写真は画像側に斜めカットと青いラインが描き込み済み。
+  SP：<picture> で SP 専用画像に切り替え、右側の背景として斜めに切り抜く。
+      ホバーがないためカラー画像は使わない。
+*/
+.c-split__media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.c-split__media .c-photo-swap {
+  height: 100%;
+  overflow: hidden;
+  clip-path: var(--media-shape);
+}
+
+.c-split__media .c-photo-swap__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.c-split__media .c-photo-swap__img--color {
+  display: none;
+}
+
+/*
+  PC：カンプ（1440px 幅）の比率を vw で再現
+  - セクション高さ 30vw / 写真の高さ 28vw（上下中央）
+  - 斜めの角度は横 0.65 : 縦 1（パネル・写真とも共通）
+*/
+@media (min-width: 768px) {
+  .c-split {
+    --split-slant: 0.65; /* 縦1に対する横のずれ */
+    --split-panel-start: 15vw; /* パネル上辺の左端 */
+    --split-panel-end: 91.5vw; /* パネル下辺の右端 */
+    --split-photo-height: 28vw;
+
+    display: flex;
+    align-items: center;
+    min-height: 30vw;
+  }
+
+  /* 斜めパネル：高さが変わっても角度が一定になるよう vw で指定 */
+  .c-split::before {
+    clip-path: polygon(
+      var(--split-panel-start) 0,
+      100% 0,
+      100% calc(100% - (100vw - var(--split-panel-end)) / var(--split-slant)),
+      var(--split-panel-end) 100%,
+      0 100%,
+      0 calc(var(--split-panel-start) / var(--split-slant))
+    );
+  }
+
+  .c-split__body {
+    position: relative;
+    z-index: 1;
+    width: 52vw;
+    padding: 64px 24px 64px 20vw;
+  }
+
+  .c-split--reverse .c-split__body {
+    width: auto;
+    margin-left: 59vw;
+    padding-left: 0;
+  }
+
+  /* 写真：画像の形のまま、高さを揃えて配置 */
+  .c-split__media {
+    z-index: auto;
+  }
+
+  .c-split__media .c-photo-swap {
+    position: absolute;
+    top: 50%;
+    left: 48vw;
+    height: var(--split-photo-height);
+    margin-top: calc(var(--split-photo-height) / -2);
+    overflow: visible;
+    clip-path: none;
+  }
+
+  /* 写真左：右端を 57vw に合わせ、左側は画面外へ */
+  .c-split--reverse .c-split__media .c-photo-swap {
+    right: 43vw;
+    left: auto;
+  }
+
+  .c-split__media .c-photo-swap__img {
+    width: auto;
+    max-width: none;
+    height: 100%;
+    object-fit: initial;
+  }
+
+  .c-split__media .c-photo-swap__img--color {
+    display: block;
+  }
+}
+
+/* 「詳しく見る」ホバーで写真をカラーに */
+.c-split:has(.c-button:hover, .c-button:focus-visible)
+  .c-photo-swap__img--color {
+  opacity: 1;
+}
+
+/*-------------------------
+  c-photo-swap：モノクロ / カラー切り替え写真
+  親で .c-photo-swap__img--color の opacity を操作する
+-------------------------*/
+.c-photo-swap {
+  position: relative;
+}
+
+/* <picture> で画像を切り替える場合も img の指定がそのまま効くように */
+.c-photo-swap picture {
+  display: contents;
+}
+
+.c-photo-swap__img {
+  width: 100%;
+  height: auto;
+}
+
+.c-photo-swap__img--color {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+/*-------------------------
+  c-banner：外部リンクバナー
+-------------------------*/
+.c-banner-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+}
+
+/*
+  --stagger：2枚を重ねて、2枚目を右下にずらす（タブレット以上）
+  幅・ずれ量はリストの横幅に対する % なので、置く場所が変わっても比率は保たれる
+*/
+@media (min-width: 768px) {
+  .c-banner-list--stagger {
+    --banner-width: 58%; /* 1枚の幅 */
+    --banner-shift: 8.5%; /* 2枚目の下へのずれ */
+
+    grid-template-areas: "stack";
+    gap: 0;
+  }
+
+  .c-banner-list--stagger .c-banner-list__item {
+    grid-area: stack;
+    align-self: start;
+    width: var(--banner-width);
+  }
+
+  .c-banner-list--stagger .c-banner-list__item:nth-child(2) {
+    justify-self: end;
+    margin-top: var(--banner-shift);
+  }
+}
+
+/* 斜めの形と影は画像に描き込み済み。<picture> で SP 専用画像に切り替え可 */
+.c-banner {
+  display: block;
+}
+
+.c-banner picture {
+  display: contents;
+}
+
+.c-banner__img {
+  width: 100%;
+  height: auto;
+  transition:
+    translate 0.4s var(--ease-out),
+    opacity var(--transition-speed);
+}
+
+.c-banner:hover .c-banner__img,
+.c-banner:focus-visible .c-banner__img {
+  translate: 0 -4px;
+  opacity: 0.85;
+}
+/*
+  --row：2枚を横並びにし、斜めの余白ぶん重ねる（タブレット以上）
+*/
+@media (min-width: 768px) {
+  .c-banner-list--row {
+    --banner-overlap: 10%; /* 2枚目を左へ重ねる量（斜めの間にすき間を残す） */
+
+    display: flex;
+    gap: 0;
+  }
+
+  .c-banner-list--row .c-banner-list__item {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .c-banner-list--row .c-banner-list__item + .c-banner-list__item {
+    margin-left: calc(var(--banner-overlap) * -1);
+  }
+}
+
+/*-------------------------
+  c-page-hero：下層ページの KV（英字＋和文タイトル）
+  左上の青い斜め面は KV の下まではみ出す
+-------------------------*/
+.c-page-hero {
+  --page-hero-slant: 32vw; /* KV 上端での斜め面の幅 */
+
+  position: relative;
+  display: grid;
+  background-color: var(--color-dark);
+  color: var(--color-white);
+}
+
+.c-page-hero > * {
+  grid-area: 1 / 1;
+}
+
+.c-page-hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: var(--page-hero-slant);
+  height: calc(var(--page-hero-slant) * 1.72);
+  background: linear-gradient(
+    180deg,
+    var(--color-main) 0%,
+    var(--color-main-dark) 60%,
+    #0d2a5c 100%
+  );
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  pointer-events: none;
+}
+
+.c-page-hero__img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 375 / 153;
+  object-fit: cover;
+  object-position: 60% 50%;
+}
+
+/* SCROLL：KV の下へはみ出した青い斜め面の上に置く（PC のみ） */
+.c-page-hero__scroll {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .c-page-hero .c-page-hero__scroll {
+    top: calc(100% + 32px);
+    left: 3.2vw;
+    z-index: 2;
+    display: flex;
+    color: var(--color-white);
+  }
+}
+
+.c-page-hero__inner {
+  position: relative;
+  z-index: 2;
+  align-self: center;
+  padding-inline: 6.5vw;
+}
+
+.c-page-hero__title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+}
+
+.c-page-hero__en {
+  font-size: clamp(40px, 11vw, 96px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.c-page-hero__ja {
+  font-size: clamp(15px, 4vw, 28px);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+@media (min-width: 768px) {
+  .c-page-hero {
+    --page-hero-slant: 24vw;
+  }
+
+  .c-page-hero__img {
+    aspect-ratio: auto;
+  }
+
+  .c-page-hero__inner {
+    padding-inline: 7.6vw;
+  }
+
+  .c-page-hero__title {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .c-page-hero__en {
+    font-size: clamp(48px, 5.6vw, 96px);
+  }
+
+  .c-page-hero__ja {
+    font-size: clamp(16px, 1.9vw, 28px);
+  }
+}
+
+/*-------------------------
+  c-intro：見出し＋本文＋図版の導入ブロック
+  SP：図版 → 見出し → 本文 / PC：見出し｜本文｜図版の横並び
+-------------------------*/
+.c-intro {
+  position: relative;
+  background-color: var(--color-white);
+  color: var(--color-dark);
+}
+
+.c-intro__inner {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 9.5vw 0;
+}
+
+.c-intro__figure {
+  order: -1;
+  padding: 0 4% 20px;
+  border-bottom: 3px solid var(--color-gray);
+}
+
+.c-intro__figure img {
+  width: 100%;
+  height: auto;
+}
+
+.c-intro__title {
+  position: relative;
+  isolation: isolate;
+  margin-top: 24px;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-main);
+}
+
+.c-intro__text {
+  padding-block: 16px 28px;
+  border-bottom: 3px solid var(--color-gray);
+  font-size: 13px;
+  line-height: 2;
+  letter-spacing: 0.06em;
+  font-feature-settings: "palt";
+}
+
+.c-intro__text p {
+  line-height: inherit;
+}
+
+@media (min-width: 1024px) {
+  .c-intro__inner {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) 28vw;
+    align-items: start;
+    gap: 2vw;
+    padding: 28px 4vw 20px 12.7vw;
+  }
+
+  .c-intro__figure {
+    order: 0;
+    align-self: center;
+    padding: 0;
+    border: 0;
+  }
+
+  .c-intro__title {
+    margin-top: 0;
+    padding-bottom: 20px;
+    font-size: clamp(28px, 2.6vw, 40px);
+    line-height: 1.2;
+  }
+
+  /* 見出し下の淡い斜めライン */
+  .c-intro__title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -6vw;
+    z-index: -1;
+    width: 10.5vw;
+    height: 18px;
+    background-color: var(--color-main-light);
+    transform: skewX(-30deg);
+  }
+
+  .c-intro__text {
+    padding: 0;
+    border: 0;
+    font-size: clamp(12px, 0.93vw, 14px);
+  }
+}
+
+/*-------------------------
+  c-process：番号付きの工程ブロック（--reverse で写真を右へ）
+  斜めの写真枠・青い線・番号は画像に描き込み済み（SP は専用画像）
+  PC：画像の上に見出し・本文を重ねる
+  SP：見出しは上の帯へ。本文は写真の斜めに沿って回り込ませる
+-------------------------*/
+.c-process-list {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  padding-bottom: 6vw;
+  background-color: var(--color-white);
+}
+
+/*
+  SP：一覧全体の背面に淡い青の三角形を敷く
+  各工程のグレーの面に隠れ、見出し帯の部分だけが斜めにのぞいてジグザグに見える
+*/
+.c-process-list::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--color-main-light);
+  clip-path: polygon(0 0, 77.5% 50%, 0 100%);
+}
+
+.c-process {
+  /*
+    SP 写真の高さ：最低 53vw。本文がそれより長い場合は JS が本文の高さを
+    --process-photo-fit に入れ、写真を本文の下端まで伸ばす
+  */
+  --process-photo-height: max(var(--process-photo-fit, 0px), 53vw);
+  --process-photo-max-width: 52vw;
+
+  position: relative;
+  z-index: 2;
+  isolation: isolate;
+  color: var(--color-dark);
+}
+
+/* 見出し帯 */
+.c-process__head {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 20px;
+  padding: 28px 20px 24px 8vw;
+}
+
+.c-process__title {
+  position: relative;
+  padding-bottom: 12px;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* 見出し下の青い斜めライン */
+.c-process__title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -6px;
+  width: 64px;
+  height: 6px;
+  background-color: var(--color-main);
+  transform: skewX(-40deg);
+}
+
+.c-process__sub {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-main);
+}
+
+/* 写真＋本文（SP はグレーの面） */
+.c-process__body {
+  display: flow-root;
+  background-color: #e5e5e5;
+}
+
+/*
+  SP：写真を左に浮かせ、斜めの辺に沿って本文を回り込ませる
+  ・写真は本文の高さまで伸ばし、横幅は 52vw まで。はみ出す分は右側をトリミング
+    （画像内の番号・白い線を残すため、左下基準）
+  ・右側を切ると画像の斜めの辺が消えるため、斜めの辺と青い線は CSS で同じ形に描き直す。
+    トリミングがない場合は画像の線とぴったり重なる
+  ・元画像（高さ 1253px）の右辺の比率：上端で 18px（1.4%）、下端で 416px（33.2%）左へ寄る。
+    青い斜め線の太さは 23px（1.84%）。高さ基準で拡大されるので、高さ × 比率で再現できる
+  ・--photo-ratio：SP 画像の幅 / 高さ（HTML で指定）
+*/
+.c-process__media {
+  --slant-top: calc(var(--process-photo-height) * 0.014);
+  --slant-bottom: calc(var(--process-photo-height) * 0.332);
+  --slant-line: calc(var(--process-photo-height) * 0.0184);
+
+  position: relative;
+  float: left;
+  width: min(
+    var(--process-photo-max-width),
+    var(--process-photo-height) * var(--photo-ratio, 1)
+  );
+  height: var(--process-photo-height);
+  shape-outside: polygon(
+    0 0,
+    calc(100% - var(--slant-top)) 0,
+    calc(100% - var(--slant-bottom)) 100%,
+    0 100%
+  );
+  shape-margin: 12px;
+}
+
+/* 青い斜め線（写真の背面に置き、斜めの辺からのぞかせる） */
+.c-process__media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-main);
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--slant-top)) 0,
+    calc(100% - var(--slant-bottom)) 100%,
+    0 100%
+  );
+}
+
+.c-process__media picture {
+  display: contents;
+}
+
+.c-process__img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left bottom;
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--slant-top) - var(--slant-line)) 0,
+    calc(100% - var(--slant-bottom) - var(--slant-line)) 100%,
+    0 100%
+  );
+}
+
+.c-process__text {
+  padding: 28px 16px 28px;
+  font-size: 12px;
+  line-height: 2;
+  letter-spacing: 0.06em;
+  font-feature-settings: "palt";
+}
+
+@media (min-width: 1024px) {
+  .c-process-list {
+    gap: 1.4vw;
+    padding-bottom: 1.4vw;
+  }
+
+  /* PC は各工程の脇に三角形を置く（.c-process::before） */
+  .c-process-list::before {
+    content: none;
+  }
+
+  /* 画像の上に、見出し・本文を縦中央で重ねる */
+  .c-process {
+    display: grid;
+    grid-template-columns: 50vw 30vw minmax(0, 1fr);
+    grid-template-rows: 1fr auto auto 1fr;
+  }
+
+  .c-process--reverse {
+    grid-template-columns: 18vw 28vw minmax(0, 1fr);
+  }
+
+  /*
+    淡い青の三角形：パネルの外側（写真の反対側）から、次の工程の行まで 2 行分にまたがる。
+    頂点は 2 行の間のすき間。次の行の写真に一部が隠れ、斜めの余白からのぞく。
+    行の高さは画像の比率（519 / 2000）で決まるため vw で指定する
+  */
+  .c-process::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+    height: calc(25.95vw * 2 + 1.4vw);
+    background-color: var(--color-main-light);
+    clip-path: polygon(
+      100% calc(50% - 22vw),
+      86.8vw 50%,
+      100% calc(50% + 22vw)
+    );
+  }
+
+  .c-process--reverse::before {
+    clip-path: polygon(0 calc(50% - 22vw), 13.2vw 50%, 0 calc(50% + 22vw));
+  }
+
+  .c-process__body {
+    display: contents;
+  }
+
+  .c-process__media {
+    grid-area: 1 / 1 / -1 / -1;
+    float: none;
+    width: auto;
+    height: auto;
+    shape-outside: none;
+  }
+
+  .c-process__media::before {
+    content: none;
+  }
+
+  .c-process__img {
+    width: 100%;
+    height: auto;
+    object-fit: initial;
+    clip-path: none;
+  }
+
+  /* マークアップ上は写真より前にあるため、重なり順を上げる */
+  .c-process__head {
+    z-index: 1;
+    grid-area: 2 / 2;
+    gap: 4px 2vw;
+    padding: 0;
+  }
+
+  .c-process__title {
+    font-size: clamp(24px, 2.3vw, 34px);
+    padding-bottom: 14px;
+  }
+
+  .c-process__title::after {
+    left: -0.8vw;
+    width: 6.7vw;
+  }
+
+  .c-process__sub {
+    font-size: clamp(12px, 0.97vw, 14px);
+  }
+
+  .c-process__text {
+    grid-area: 3 / 2;
+    padding: 1.8vw 0 0;
+    font-size: clamp(12px, 0.97vw, 14px);
+    letter-spacing: 0.04em;
+  }
+}
+
+/* スクロールで写真枠フェードイン → 文字を後から表示 */
+.is-js .c-process__media {
+  opacity: 0;
+  translate: -40px 0;
+  transition:
+    opacity 1s ease,
+    translate 1.2s var(--ease-out);
+}
+
+.is-js .c-process--reverse .c-process__media {
+  translate: 40px 0;
+}
+
+.is-js .c-process__head,
+.is-js .c-process__text {
+  opacity: 0;
+  translate: 0 24px;
+  transition:
+    opacity 0.8s ease,
+    translate 1s var(--ease-out);
+  transition-delay: 0.6s;
+}
+
+.is-js .c-process__text {
+  transition-delay: 0.8s;
+}
+
+.is-js
+  .c-process.is-inview
+  :is(.c-process__media, .c-process__head, .c-process__text) {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/* SP は見出し帯を写真と同時に表示し、本文を後から出す */
+@media (max-width: 1023px) {
+  .is-js .c-process__head {
+    transition-delay: 0s;
+  }
+
+  .is-js .c-process__text {
+    transition-delay: 0.5s;
+  }
+}
+
+/*-------------------------
+  c-message-banner：文字入り画像のメッセージ帯（SP は専用画像）
+  画像内の文言は HTML にも残し、視覚的には隠す（読み上げ・検索用）
+-------------------------*/
+.c-message-banner {
+  position: relative;
+}
+
+.c-message-banner__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.c-message-banner__body {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .c-message-banner {
+    margin: 2.4vw 5.5vw 1.7vw;
+  }
+}
+
+/*-------------------------
+  c-heading：青の見出し（PC は左下に淡い青の斜めライン）
+-------------------------*/
+.c-heading {
+  position: relative;
+  isolation: isolate;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.1em;
+  color: var(--color-main);
+}
+
+@media (min-width: 1024px) {
+  .c-heading {
+    padding-bottom: 20px;
+    font-size: clamp(28px, 2.6vw, 40px);
+  }
+
+  .c-heading::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -6vw;
+    z-index: -1;
+    width: 10.5vw;
+    height: 18px;
+    background-color: var(--color-main-light);
+    transform: skewX(-30deg);
+  }
+}
+
+/*-------------------------
+  c-sub-title：黒の小見出し＋青い斜めの下線
+-------------------------*/
+.c-sub-title {
+  position: relative;
+  width: fit-content;
+  padding-bottom: 12px;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--color-dark);
+}
+
+.c-sub-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -6px;
+  width: 64px;
+  height: 6px;
+  background-color: var(--color-main);
+  transform: skewX(-40deg);
+}
+
+@media (min-width: 1024px) {
+  .c-sub-title {
+    padding-bottom: 14px;
+    font-size: clamp(26px, 2.7vw, 40px);
+  }
+
+  .c-sub-title::after {
+    left: -1.5vw;
+    width: 7vw;
+  }
+}
+
+/*-------------------------
+  c-spec-groups：小見出し＋一覧のまとまりを並べる（PC は 2 列）
+  --wide：2 列ぶち抜き / __lists：一覧を PC で横に並べる
+-------------------------*/
+.c-spec-groups {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 48px;
+}
+
+.c-spec-groups__lists {
+  display: grid;
+  margin-top: 28px;
+  padding-left: 5vw;
+}
+
+@media (min-width: 1024px) {
+  .c-spec-groups {
+    grid-template-columns: 45vw minmax(0, 1fr);
+    gap: 6vw 0;
+    padding-left: 1.5vw;
+  }
+
+  .c-spec-groups__item--wide {
+    grid-column: 1 / -1;
+  }
+
+  .c-spec-groups__lists {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0 3vw;
+    margin-top: 2.6vw;
+    padding-left: 2vw;
+  }
+}
+
+/*-------------------------
+  c-spec-list：名称・台数・軸数の一覧
+  SP：名称の列を伸ばし、台数・軸数の位置をそろえる / PC：内容に合わせた幅
+-------------------------*/
+.c-spec-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 4em 3.5em;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 2.1;
+  color: var(--color-dark);
+}
+
+.c-spec-list__row {
+  display: contents;
+}
+
+/* 軸数がない行でも、名称は必ず行頭から始める */
+.c-spec-list dt {
+  grid-column: 1;
+}
+
+.c-spec-list dd {
+  text-align: right;
+  white-space: nowrap;
+}
+
+@media (min-width: 1024px) {
+  .c-spec-list {
+    grid-template-columns: max-content max-content max-content;
+    column-gap: 1em;
+    font-size: clamp(13px, 1.15vw, 17px);
+    line-height: 1.9;
+  }
+}
+
+/*-------------------------
+  c-feature：写真＋小見出し＋本文のパネル（設備紹介など）
+  PC：灰色の斜めパネルと写真は画像に描き込み済み。画像の灰色部分に文字を重ねる
+  SP：灰色の四角の左 41vw に、写真部分をパネルの高さいっぱいまで拡大して切り出す
+  （画像の灰色以外は透過なので、背景の灰色と一体に見える）
+  HTML で指定：
+    --panel-top：画像上端から灰色パネルまでの距離 / 画像幅
+    --img-ratio：画像の幅 / 高さ
+    --photo-center：写真部分の中心 / 画像幅（SP でこの位置を枠の中央に合わせる）
+-------------------------*/
+.c-feature-list {
+  display: grid;
+  gap: 2.6vw;
+}
+
+.c-feature {
+  display: grid;
+  grid-template-columns: 41vw minmax(0, 1fr);
+  background-color: #e6e6e7;
+}
+
+.c-feature__media {
+  position: relative;
+  container-type: size; /* 高さは本文側で決まる */
+  overflow: hidden;
+}
+
+/*
+  画像を枠の高さに合わせて拡大し、写真の中心を枠の中央へ
+  （画像の幅 = 枠の高さ × --img-ratio）
+*/
+.c-feature__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: calc(
+      50cqw - 100cqh * var(--img-ratio, 4) * var(--photo-center, 0.17)
+    )
+    50%;
+}
+
+.c-feature__body {
+  padding: 8vw 5vw 9vw 4vw;
+}
+
+.c-feature__text {
+  margin-top: 20px;
+  font-size: 12px;
+  line-height: 2;
+  letter-spacing: 0.1em;
+  color: var(--color-dark);
+}
+
+.c-feature__text p {
+  line-height: inherit;
+}
+
+@media (min-width: 1024px) {
+  .c-feature-list {
+    --feature-width: 97.5vw;
+
+    gap: 0;
+    width: var(--feature-width);
+    margin-left: 2vw;
+  }
+
+  /* 画像と文字を重ねる */
+  .c-feature {
+    grid-template-columns: minmax(0, 1fr);
+    background: none;
+  }
+
+  .c-feature > * {
+    grid-area: 1 / 1;
+  }
+
+  /*
+    画像の写真部分は灰色パネルより上にはみ出すため、パネル同士のすき間が
+    2.4vw になるよう、はみ出し分だけ前の画像に重ねる
+  */
+  .c-feature + .c-feature {
+    margin-top: calc(2.4vw - var(--feature-width) * var(--panel-top, 0));
+  }
+
+  .c-feature__media {
+    align-self: start;
+    container-type: normal;
+    overflow: visible;
+  }
+
+  .c-feature__img {
+    position: static;
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: initial;
+    object-position: initial;
+  }
+
+  /* 文字は灰色パネル部分の縦中央 */
+  .c-feature__body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: calc(var(--feature-width) * var(--panel-top, 0)) 8vw 0 39.3vw;
+  }
+
+  .c-feature__text {
+    margin-top: 2vw;
+    font-size: clamp(12px, 1vw, 15px);
+    letter-spacing: 0.04em;
+    font-size: 14px;
+  }
+}
+
+/*-------------------------
+  l-section：下層ページのセクション
+  --wide：PC で中身を左右いっぱいに使う / --divider：SP で上に区切り線
+-------------------------*/
+.l-section {
+  padding: 40px 10vw 64px;
+  background-color: var(--color-white);
+}
+
+.l-section__heading {
+  margin-bottom: 32px;
+}
+
+.l-section--wide {
+  padding-inline: 0;
+}
+
+.l-section--wide .l-section__heading {
+  margin-inline: 10vw;
+}
+
+.l-section--divider {
+  padding-top: 0;
+}
+
+.l-section--divider::before {
+  content: "";
+  display: block;
+  height: 3px;
+  margin: 0 9.5vw 40px;
+  background-color: var(--color-gray);
+}
+
+@media (min-width: 1024px) {
+  .l-section {
+    padding: 4vw 8vw 7vw 12.4vw;
+  }
+
+  .l-section__heading {
+    margin-bottom: 5vw;
+  }
+
+  .l-section--wide {
+    padding-inline: 0;
+  }
+
+  .l-section--wide .l-section__heading {
+    margin-inline: 5.2vw;
+    margin-bottom: 3vw;
+  }
+
+  .l-section--divider {
+    padding-top: 2vw;
+  }
+
+  .l-section--divider::before {
+    content: none;
+  }
+}
+
+/*-------------------------
+  c-section-title--stack-pc：PC で英字の下に和文を離して置く
+-------------------------*/
+@media (min-width: 1024px) {
+  .c-section-title--stack-pc {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3.5vw;
+  }
+}
+
+/*-------------------------
+  l-sticky-area：中の要素が追従する範囲（ページ内ナビなど）
+  l-anchor：ページ内リンクの着地点。固定ヘッダー＋追従ナビの高さぶん下げる
+-------------------------*/
+.l-sticky-area {
+  --page-nav-height: 0px;
+
+  position: relative;
+}
+
+.l-anchor {
+  scroll-margin-top: calc(var(--header-height) + var(--page-nav-height));
+}
+
+@media (min-width: 1024px) {
+  .l-sticky-area {
+    --page-nav-height: calc(7vw + 32px);
+  }
+}
+
+/*-------------------------
+  c-page-nav：ページ内ナビ（PC のみ・スクロールに追従）
+  タブは斜めの形と文字を描き込んだ画像。斜めの余白ぶん重ねて並べる
+-------------------------*/
+.c-page-nav {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .c-page-nav {
+    position: sticky;
+    top: calc(var(--header-height) + 16px);
+    z-index: 20;
+    display: block;
+    margin: 2.3vw 4.2vw 0 8.3vw;
+    pointer-events: none; /* タブのすき間は下の要素を操作できるように */
+  }
+
+  .c-page-nav__list {
+    display: flex;
+  }
+
+  .c-page-nav__item {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .c-page-nav__item + .c-page-nav__item {
+    margin-left: -2.4vw;
+  }
+
+  .c-page-nav__link {
+    display: block;
+    pointer-events: auto;
+  }
+
+  .c-page-nav__link img {
+    width: 100%;
+    height: auto;
+    transition:
+      translate 0.4s var(--ease-out),
+      filter var(--transition-speed);
+  }
+
+  .c-page-nav__link:hover img,
+  .c-page-nav__link:focus-visible img {
+    translate: 0 -4px;
+    filter: brightness(1.15);
+  }
+}
+
+/*-------------------------
+  l-aside-layout：本文＋右側の補足（PC は右端まではみ出す 2 列）
+-------------------------*/
+.l-aside-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 56px;
+}
+
+@media (min-width: 1024px) {
+  .l-aside-layout {
+    grid-template-columns: minmax(0, 1fr) 39.2vw;
+    align-items: start;
+    gap: 0;
+  }
+}
+
+/*-------------------------
+  c-def-list：項目名＋内容の一覧（会社概要・沿革など）
+  --nested：内容の中の一覧 / --wide-term：項目名の列を広く
+  --stack-sp：SP は項目名の下に内容
+-------------------------*/
+.c-def-list {
+  --term-width: 5em;
+
+  display: grid;
+  grid-template-columns: var(--term-width) minmax(0, 1fr);
+  column-gap: 1em;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.95;
+  color: var(--color-dark);
+}
+
+.c-def-list > dt {
+  grid-column: 1;
+  color: var(--color-main);
+}
+
+.c-def-list > dd {
+  grid-column: 2;
+}
+
+.c-def-list p {
+  line-height: inherit;
+}
+
+.c-def-list--nested {
+  --term-width: 7em;
+
+  column-gap: 0.6em;
+  font-size: 1em;
+}
+
+.c-def-list--nested > dt {
+  color: inherit;
+}
+
+.c-def-list--wide-term {
+  --term-width: 6.5em;
+}
+
+@media (min-width: 1024px) {
+  .c-def-list--wide-term {
+    --term-width: 8.5em;
+  }
+}
+
+@media (max-width: 767px) {
+  .c-def-list--stack-sp {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .c-def-list--stack-sp > dd {
+    grid-column: 1;
+    padding-left: 1.3em;
+  }
+}
+
+@media (min-width: 1024px) {
+  .c-def-list {
+    --term-width: 6em;
+
+    column-gap: 1.2em;
+    font-size: clamp(14px, 1.45vw, 21px);
+  }
+
+  .c-def-list--nested {
+    --term-width: 7.5em;
+  }
+
+  .c-def-list--nested {
+    font-size: 1em;
+  }
+}
+
+/*-------------------------
+  c-caption-photo：英字・和文のキャプション付き写真（斜めの形と青い線は画像に描き込み済み）
+  SP：キャプションは左上 / PC：キャプションを写真の左に重ねる
+-------------------------*/
+.c-caption-photo-list {
+  display: grid;
+  gap: 40px;
+}
+
+.c-caption-photo {
+  position: relative;
+}
+
+.c-caption-photo__img {
+  display: block;
+  width: 77vw;
+  height: auto;
+  margin-left: auto;
+}
+
+.c-caption-photo__caption {
+  position: absolute;
+  top: 0;
+  left: 11.5vw;
+  display: grid;
+  line-height: 1.4;
+}
+
+.c-caption-photo__en {
+  font-size: clamp(15px, 4vw, 24px);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-main);
+}
+
+.c-caption-photo__ja {
+  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-dark);
+}
+
+@media (min-width: 1024px) {
+  .c-caption-photo-list {
+    gap: 3.1vw;
+  }
+
+  .c-caption-photo__img {
+    width: 33vw;
+    max-width: none;
+    margin-left: 10vw;
+  }
+
+  .c-caption-photo__caption {
+    top: 50%;
+    left: 0;
+    translate: 0 -40%;
+  }
+
+  .c-caption-photo__en {
+    font-size: clamp(18px, 2.2vw, 32px);
+  }
+
+  .c-caption-photo__ja {
+    font-size: clamp(12px, 1.3vw, 19px);
+  }
+}
+
+/*-------------------------
+  c-company：会社概要（会社情報＋工場写真＋沿革）
+-------------------------*/
+.c-company {
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
+  padding: 40px 0 80px;
+  background-color: var(--color-white);
+}
+
+.c-company__heading {
+  margin: 0 10vw 40px;
+}
+
+.c-company .l-aside-layout__main,
+.c-company__history {
+  padding-inline: 10vw;
+}
+
+.c-company__info {
+  margin: 36px -4vw 0 4vw;
+}
+
+.c-company__history {
+  margin-top: 88px;
+}
+
+.c-company__history-list {
+  margin: 32px 0 0 5vw;
+}
+
+@media (min-width: 1024px) {
+  .c-company {
+    padding: 7vw 0 6vw;
+  }
+
+  /* PC はページ内ナビが見出しの代わり */
+  .c-company__heading {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .c-company .l-aside-layout__main {
+    padding: 0 0 0 10.4vw;
+  }
+
+  .c-company__info {
+    margin: 3.6vw 0 0 3.7vw;
+  }
+
+  /* 工場写真の背面に、淡い青の三角形 */
+  .c-company .l-aside-layout__aside {
+    position: relative;
+    margin-top: 2vw;
+  }
+
+  .c-company .l-aside-layout__aside::before {
+    content: "";
+    position: absolute;
+    top: -7vw;
+    right: 0;
+    z-index: -1;
+    width: 22.7vw;
+    height: 76vw;
+    background-color: var(--color-main-light);
+    clip-path: polygon(100% 0, 0 48.7%, 100% 100%);
+  }
+
+  .c-company__history {
+    margin-top: 8vw;
+    padding: 0 0 0 10.4vw;
+  }
+
+  .c-company__history-list {
+    margin: 2.2vw 0 0 12.5vw;
+  }
+}
+
+/*-------------------------
+  c-message：写真付きのメッセージ（代表挨拶など）
+  SP：見出し → 本文（幅いっぱい）→ 写真＋署名
+  PC：左に見出しと写真、右に本文と署名
+-------------------------*/
+.c-message {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    "head"
+    "text"
+    "side"
+    "photo";
+  padding: 14vw var(--inner-padding) 0;
+  background: linear-gradient(
+    120deg,
+    #3b82c4 0%,
+    var(--color-main-dark) 55%,
+    #0e2b5c 100%
+  );
+  color: var(--color-white);
+}
+
+.c-message__head {
+  grid-area: head;
+  margin-bottom: 24px;
+}
+
+.c-message__text {
+  grid-area: text;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 2.1;
+  letter-spacing: 0.08em;
+}
+
+.c-message__text p {
+  line-height: inherit;
+  text-indent: 1em;
+}
+
+.c-message__block + .c-message__block,
+.c-message__text--side {
+  margin-top: 2.1em;
+}
+
+.c-message__text--side {
+  grid-area: side;
+}
+
+/* 署名：SP は写真の右上（画像の透過部分）に重ねる */
+.c-message__sign {
+  position: relative;
+  z-index: 1;
+  grid-area: photo;
+  align-self: start;
+  justify-self: end;
+  display: grid;
+  justify-items: end;
+  gap: 4px;
+  margin-top: 32px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.c-message__name {
+  font-size: 1.6em;
+  letter-spacing: 0.2em;
+}
+
+/* 写真は左端・下端まで */
+.c-message__photo {
+  grid-area: photo;
+  align-self: end;
+  width: calc(100% + var(--inner-padding));
+  max-width: 480px;
+  height: auto;
+  margin: 8px 0 0 calc(var(--inner-padding) * -1);
+}
+
+@media (min-width: 1024px) {
+  .c-message {
+    grid-template-columns: 23.2vw minmax(0, 1fr);
+    grid-template-areas:
+      "head text"
+      ". side"
+      ". sign";
+    padding: 9.5vw 8.3vw 8vw 7vw;
+    background: linear-gradient(
+      90deg,
+      #3b82c4 0%,
+      var(--color-main-dark) 50%,
+      #0e2b5c 100%
+    );
+  }
+
+  .c-message__head {
+    margin-bottom: 0;
+  }
+
+  .c-message__text {
+    position: relative;
+    z-index: 1;
+    font-size: clamp(13px, 1.25vw, 18px);
+    line-height: 2.65;
+    letter-spacing: 0.06em;
+  }
+
+  .c-message__block + .c-message__block,
+  .c-message__text--side {
+    margin-top: 2.65em;
+  }
+
+  /* 2 つ目のまとまりは、前の本文の続きとして間を空けない */
+  .c-message__text--side {
+    margin-top: 0;
+  }
+
+  .c-message__sign {
+    grid-area: sign;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 1em;
+    margin-top: 0.4em;
+    font-size: clamp(13px, 1.25vw, 18px);
+  }
+
+  .c-message__name {
+    font-size: 1.5em;
+  }
+
+  /* PC：写真は左下に固定し、本文の背面に置く */
+  .c-message__photo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    width: 46.7vw;
+    max-width: none;
+    margin: 0;
+  }
+}
+
+/*-------------------------
+  c-lead：ページ冒頭の太字リード
+-------------------------*/
+.c-lead {
+  font-size: clamp(14px, 3.9vw, 30px);
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: 0.06em;
+  color: var(--color-dark);
+}
+
+@media (min-width: 1024px) {
+  .c-lead {
+    font-size: clamp(18px, 2.1vw, 30px);
+    letter-spacing: 0.1em;
+  }
+}
+
+/*-------------------------
+  c-text-link：本文中のリンク
+-------------------------*/
+.c-text-link {
+  color: var(--color-main);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.c-text-link:hover,
+.c-text-link:focus-visible {
+  text-decoration: none;
+}
+
+/*-------------------------
+  c-tel-box：電話番号の案内（黒い帯）
+  SP：見出しの下に番号 / PC：縦線で区切って横並び
+-------------------------*/
+.c-tel-box {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  padding: 22px 16px 26px;
+  background-color: var(--color-dark);
+  color: var(--color-white);
+}
+
+.c-tel-box__lead {
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: 0.06em;
+}
+
+.c-tel-box__body {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4px 16px;
+}
+
+.c-tel-box__number {
+  font-size: clamp(22px, 7.4vw, 48px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.c-tel-box__note {
+  font-size: clamp(11px, 3vw, 22px);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+@media (min-width: 1024px) {
+  .c-tel-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.8vw;
+    padding: 4.6vw 3vw;
+  }
+
+  .c-tel-box__lead {
+    padding-right: 1.8vw;
+    border-right: 2px solid var(--color-white);
+    font-size: clamp(14px, 1.55vw, 22px);
+    line-height: 1.9;
+  }
+
+  .c-tel-box__number {
+    font-size: clamp(28px, 3.3vw, 48px);
+  }
+
+  .c-tel-box__note {
+    font-size: clamp(14px, 1.55vw, 22px);
+  }
+}
+
+/*-------------------------
+  c-form：入力フォーム
+  --required：ラベルの前に赤い点（必須）
+-------------------------*/
+.c-form {
+  display: grid;
+  gap: 28px;
+}
+
+.c-form__label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-dark);
+}
+
+.c-form__label--required::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin: 0 5px 0.2em -10px;
+  border-radius: 50%;
+  background-color: #e60012;
+  vertical-align: middle;
+}
+
+.c-form__input {
+  display: block;
+  width: 100%;
+  height: 52px;
+  padding: 8px 12px;
+  border: 1.5px solid var(--color-dark);
+  border-radius: 0;
+  background-color: var(--color-white);
+  font: inherit;
+  font-size: 16px; /* iOS の自動ズームを防ぐ */
+  color: var(--color-dark);
+  appearance: none;
+}
+
+.c-form__input:focus-visible {
+  outline: 2px solid var(--color-main);
+  outline-offset: 2px;
+}
+
+.c-form__input[aria-invalid="true"] {
+  border-color: #e60012;
+}
+
+.c-form__input--textarea {
+  height: auto;
+  min-height: 200px;
+  resize: vertical;
+}
+
+.c-form__note {
+  margin: 8px 0 0 12px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-dark);
+}
+
+.c-form__error {
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #e60012;
+}
+
+.c-form__error:empty {
+  display: none;
+}
+
+.c-form__agree {
+  display: grid;
+  justify-items: center;
+  margin-top: 8px;
+}
+
+.c-form__submit {
+  display: grid;
+}
+
+@media (min-width: 1024px) {
+  .c-form {
+    gap: 3.3vw;
+  }
+
+  .c-form__label {
+    font-size: clamp(13px, 1.25vw, 18px);
+  }
+
+  .c-form__input {
+    height: 6.6vw;
+    max-height: 96px;
+  }
+
+  .c-form__input--textarea {
+    height: auto;
+    max-height: none;
+    min-height: 26vw;
+  }
+
+  .c-form__agree {
+    margin-top: 0;
+  }
+
+  .c-form__submit {
+    justify-items: center;
+  }
+}
+
+/*-------------------------
+  c-file：ファイル選択（input は見た目だけ隠し、ラベルをボタンにする）
+-------------------------*/
+.c-file {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+}
+
+.c-file__button {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  min-width: 200px;
+  padding: 10px 24px;
+  background-color: #b5b5b6;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-white);
+  cursor: pointer;
+  transition: background-color var(--transition-speed);
+}
+
+.c-file__button:hover {
+  background-color: #9fa0a0;
+}
+
+.c-file__button:has(:focus-visible) {
+  outline: 2px solid var(--color-main);
+  outline-offset: 2px;
+}
+
+.c-file__input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.c-file__name {
+  min-width: 0;
+  font-size: 12px;
+  color: var(--color-font);
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 1024px) {
+  .c-file__button {
+    min-width: 17.5vw;
+    padding-block: 0.9vw;
+    font-size: clamp(13px, 1.25vw, 18px);
+  }
+}
+
+/*-------------------------
+  c-checkbox：チェックボックス（四角の枠を描き直す）
+-------------------------*/
+.c-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-dark);
+  cursor: pointer;
+}
+
+/* リセット CSS の input[type="checkbox"] { display: none } より強くする */
+.c-checkbox .c-checkbox__input {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  border: 1.5px solid var(--color-dark);
+  background-color: var(--color-white);
+  appearance: none;
+  cursor: pointer;
+}
+
+.c-checkbox__input::after {
+  content: "";
+  width: 5px;
+  height: 9px;
+  margin-top: -2px;
+  border-right: 2px solid var(--color-white);
+  border-bottom: 2px solid var(--color-white);
+  rotate: 45deg;
+  scale: 0;
+  transition: scale 0.2s var(--ease-out);
+}
+
+.c-checkbox__input:checked {
+  border-color: var(--color-main);
+  background-color: var(--color-main);
+}
+
+.c-checkbox__input:checked::after {
+  scale: 1;
+}
+
+.c-checkbox__input:focus-visible {
+  outline: 2px solid var(--color-main);
+  outline-offset: 2px;
+}
+
+@media (min-width: 1024px) {
+  .c-checkbox {
+    font-size: clamp(14px, 1.4vw, 20px);
+  }
+}
+
+/*-------------------------
+  c-submit-button：送信ボタン（黒）
+-------------------------*/
+.c-submit-button {
+  display: block;
+  width: 100%;
+  padding: 18px 24px;
+  border: 0;
+  background-color: var(--color-dark);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--color-white);
+  cursor: pointer;
+  transition: background-color var(--transition-speed);
+}
+
+.c-submit-button:hover,
+.c-submit-button:focus-visible {
+  background-color: var(--color-main-dark);
+}
+
+.c-submit-button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+@media (min-width: 768px) {
+  .c-submit-button {
+    width: min(100%, 38.3vw);
+    min-width: 320px;
+    padding-block: 1.8vw;
+    font-size: clamp(14px, 1.25vw, 18px);
+  }
+}
+
+/*-------------------------
+  p-contact：お問い合わせページ
+-------------------------*/
+.p-contact {
+  padding: 32px 7vw 56px;
+  background-color: var(--color-white);
+}
+
+.p-contact__lead {
+  margin-bottom: 20px;
+}
+
+.p-contact__form {
+  margin-top: 24px;
+}
+
+.p-contact__intro {
+  margin-bottom: 40px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 2.1;
+  letter-spacing: 0.06em;
+  color: var(--color-dark);
+}
+
+.p-contact__intro p {
+  line-height: inherit;
+}
+
+.p-contact .c-form {
+  padding-left: 4px;
+}
+
+@media (min-width: 1024px) {
+  .p-contact {
+    padding: 3.8vw 9.9vw 6vw 11vw;
+  }
+
+  .p-contact__lead {
+    margin-bottom: 3vw;
+    padding-left: 3.8vw;
+  }
+
+  .p-contact__form {
+    margin-top: 4.2vw;
+    padding: 0 7.6vw 0 5.8vw;
+  }
+
+  .p-contact__intro {
+    margin-bottom: 5vw;
+    font-size: clamp(13px, 1.25vw, 18px);
+    line-height: 2.6;
+  }
+}
+
+/*-------------------------
+  c-split-button：白いラベル＋黒いアクション部分のボタン（境目は斜め）
+-------------------------*/
+.c-split-button {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid var(--color-white);
+  background-color: var(--color-white);
+}
+
+.c-split-button__label {
+  display: grid;
+  place-items: center;
+  padding: 8px 4vw 8px 6vw;
+  font-size: clamp(15px, 4.8vw, 30px);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #3e3a39;
+  white-space: nowrap;
+}
+
+.c-split-button__action {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 3vw 0 5.4vw;
+  background-color: var(--color-dark);
+  clip-path: polygon(3.4vw 0, 100% 0, 100% 100%, 0 100%);
+  margin-left: -3.4vw;
+  font-size: clamp(11px, 3vw, 14px);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--color-white);
+  white-space: nowrap;
+}
+
+/* 矢印（c-button と同じ形） */
+.c-split-button__action::after {
+  content: "";
+  width: 8vw;
+  max-width: 72px;
+  height: 6px;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: skewX(60deg);
+  transition: translate var(--transition-speed) var(--ease-out);
+}
+
+.c-split-button:hover .c-split-button__action::after,
+.c-split-button:focus-visible .c-split-button__action::after {
+  translate: 8px 0;
+}
+
+@media (min-width: 1024px) {
+  .c-split-button__label {
+    padding: 0.5vw 3.4vw 0.5vw 3.1vw;
+    font-size: clamp(16px, 1.9vw, 28px);
+  }
+
+  .c-split-button__action {
+    gap: 0.9vw;
+    padding: 0 1vw 0 2.8vw;
+    margin-left: -1.6vw;
+    clip-path: polygon(1.6vw 0, 100% 0, 100% 100%, 0 100%);
+    font-size: clamp(10px, 0.9vw, 13px);
+  }
+
+  .c-split-button__action::after {
+    width: 4.8vw;
+  }
+}
+
+/*-------------------------
+  c-recruit-band：採用ページへの導線＋SNS（下層ページ共通）
+  左上に青い三角形。写真の斜めの形・影は画像に描き込み済み
+  SP：見出し → 写真（右）にボタンを重ねる → SNS
+  PC：見出し｜写真｜SNS の 3 列。ボタンは見出しの下で写真に重ねる
+-------------------------*/
+.c-recruit-band {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    "body"
+    "img"
+    "button"
+    "sns";
+  background-color: var(--color-dark);
+  color: var(--color-white);
+}
+
+/* 左上の青い三角形 */
+.c-recruit-band::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 15vw;
+  height: 23.5vw;
+  background: linear-gradient(
+    180deg,
+    var(--color-main) 0%,
+    var(--color-main-dark) 100%
+  );
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+.c-recruit-band__body {
+  grid-area: body;
+  position: relative;
+  z-index: 1;
+  padding: 8vw 0 0 11vw;
+}
+
+.c-recruit-band__title {
+  display: grid;
+  font-size: clamp(24px, 7.2vw, 48px);
+  font-weight: 900;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+}
+
+.c-recruit-band__line--shift {
+  padding-left: 1em;
+}
+
+.c-recruit-band__text {
+  margin-top: 12px;
+  font-size: clamp(10px, 2.8vw, 14px);
+  font-weight: 700;
+  line-height: 1.8;
+  text-shadow: 0 0 6px rgb(0 0 0 / 0.8);
+}
+
+/* SP：写真は右寄せで、見出しの 2 行目から下に重ねる */
+.c-recruit-band__img {
+  grid-area: img;
+  justify-self: end;
+  width: 68vw;
+  max-width: none;
+  height: auto;
+  margin-top: -24vw;
+}
+
+.c-recruit-band__button {
+  grid-area: button;
+  position: relative;
+  z-index: 1;
+  justify-self: start;
+  margin: -7vw 0 8vw 10.5vw;
+}
+
+.c-recruit-band__sns {
+  grid-area: sns;
+  padding: 28px 6% 32px;
+  background-color: var(--color-gray);
+}
+
+@media (min-width: 1024px) {
+  .c-recruit-band {
+    grid-template-columns: 34vw 39vw minmax(0, 1fr);
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+      "body img sns"
+      "button img sns";
+    align-items: center;
+    padding: 3vw 2.2vw 3.6vw 0;
+  }
+
+  .c-recruit-band::before {
+    width: 9.7vw;
+    height: 16vw;
+  }
+
+  .c-recruit-band__body {
+    align-self: start;
+    padding: 1.2vw 0 0 7vw;
+  }
+
+  .c-recruit-band__title {
+    font-size: clamp(28px, 3.4vw, 50px);
+  }
+
+  .c-recruit-band__line--shift {
+    padding-left: 1.9em;
+  }
+
+  .c-recruit-band__text {
+    margin-top: 1.6vw;
+    font-size: clamp(11px, 1.1vw, 16px);
+    text-shadow: none;
+  }
+
+  .c-recruit-band__img {
+    grid-area: img;
+    width: 41vw;
+    margin: 0 0 0 -4vw;
+  }
+
+  .c-recruit-band__button {
+    align-self: end;
+    margin: 0 0 1.2vw 6.9vw;
+    width: calc(100% + 6vw);
+    margin-right: -6vw;
+  }
+
+  .c-recruit-band__button .c-split-button__label {
+    flex: 1;
+  }
+
+  .c-recruit-band__sns {
+    padding: 0 0 0 1.4vw;
+    background: none;
+  }
+
+  .c-recruit-band__sns .c-banner-list {
+    gap: 1.6vw;
+  }
+}
+
+/*-------------------------
+  c-lead--large：大きめのリード / __em：青で強調
+-------------------------*/
+.c-lead--large {
+  font-size: clamp(18px, 5.4vw, 40px);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.c-lead__em {
+  font-style: normal;
+  color: var(--color-main);
+}
+
+@media (min-width: 1024px) {
+  .c-lead--large {
+    font-size: clamp(24px, 2.8vw, 40px);
+  }
+}
+
+/*-------------------------
+  c-info-table：項目名（灰色）＋内容の表（募集要項など）
+-------------------------*/
+.c-info-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 4px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--color-dark);
+}
+
+.c-info-table th,
+.c-info-table td {
+  padding: 12px 0;
+  vertical-align: middle;
+}
+
+.c-info-table th {
+  width: 24%;
+  padding-inline: 8px;
+  background-color: #e6e6e7;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: var(--color-main);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.c-info-table td {
+  padding-left: 6%;
+  padding-right: 8px;
+  border: 3px solid #e6e6e7;
+  border-left: 0;
+  border-top-width: 2px;
+  border-left: 4px solid var(--color-white);
+}
+
+.c-info-table small {
+  font-size: 0.85em;
+}
+
+.c-info-table__sub {
+  display: block;
+}
+
+.c-info-table__em {
+  font-style: normal;
+  font-size: 2em;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  color: var(--color-main);
+}
+
+@media (min-width: 1024px) {
+  .c-info-table {
+    border-spacing: 0 5px;
+    font-size: clamp(13px, 1.25vw, 18px);
+  }
+
+  .c-info-table th,
+  .c-info-table td {
+    padding-block: 1.2vw;
+  }
+
+  .c-info-table th {
+    width: 17%;
+    font-size: clamp(13px, 1.25vw, 18px);
+  }
+
+  .c-info-table td {
+    padding-left: 3.6vw;
+  }
+
+  .c-info-table__sub {
+    display: inline;
+    margin-left: 0.4em;
+  }
+}
+
+/*-------------------------
+  c-slash-heading：両側に斜線の飾りが付いた見出し
+-------------------------*/
+.c-slash-heading {
+  display: grid;
+  justify-items: center;
+  color: var(--color-dark);
+  text-align: center;
+}
+
+.c-slash-heading__sub {
+  font-size: clamp(14px, 3.9vw, 26px);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.c-slash-heading__main {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  font-size: clamp(16px, 4.6vw, 40px);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+/* 斜線 3 本（左は \\\、右は ///） */
+.c-slash-heading__main::before,
+.c-slash-heading__main::after {
+  content: "";
+  flex-shrink: 0;
+  width: 1.4em;
+  height: 1.1em;
+  background: repeating-linear-gradient(
+    var(--slash-angle, 135deg),
+    transparent 0 0.24em,
+    currentColor 0.24em calc(0.24em + 2px)
+  );
+  mask-image: linear-gradient(transparent 0, #000 0);
+}
+
+.c-slash-heading__main::before {
+  --slash-angle: 45deg;
+}
+
+@media (min-width: 1024px) {
+  .c-slash-heading__sub {
+    font-size: clamp(16px, 1.8vw, 26px);
+  }
+
+  .c-slash-heading__main {
+    gap: 0.7em;
+    font-size: clamp(24px, 2.8vw, 40px);
+    letter-spacing: 0.08em;
+  }
+}
+
+/*-------------------------
+  c-circle-list：丸い画像を並べる（中央の --main を大きく）
+  SP：--main を上に大きく、残り 2 つは下に並べて --main の下端に重ねる（2 つどうしは重ねない）
+  PC：横一列（--main が中央）
+-------------------------*/
+.c-circle-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  justify-items: center;
+}
+
+.c-circle-list__item img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.c-circle-list__item--main {
+  position: relative;
+  z-index: 1;
+  grid-column: 1 / -1;
+  width: 70%;
+  margin-bottom: -11%;
+}
+
+.c-circle-list__item:not(.c-circle-list__item--main) {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.c-circle-link {
+  display: block;
+  border-radius: 50%;
+  transition: scale 0.4s var(--ease-out);
+}
+
+.c-circle-link:hover,
+.c-circle-link:focus-visible {
+  scale: 1.04;
+}
+
+@media (min-width: 1024px) {
+  /* 3 つを横一列に。丸を列幅より少し大きくし、隣どうしを少し重ねる（中央が手前） */
+  .c-circle-list {
+    --circle-overlap: 0.075; /* 重なりの量（丸の直径に対する割合） */
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+  }
+
+  .c-circle-list__item--main,
+  .c-circle-list__item:not(.c-circle-list__item--main) {
+    width: calc(100% / (1 - var(--circle-overlap) * 2 / 3));
+    margin: 0;
+  }
+
+  .c-circle-list__item--main {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .c-circle-list__item:not(.c-circle-list__item--main) {
+    z-index: auto;
+  }
+
+  .c-circle-list__item--main + .c-circle-list__item {
+    justify-self: start;
+  }
+
+  .c-circle-list__item:last-child {
+    justify-self: end;
+  }
+}
+
+/*-------------------------
+  p-recruit：採用情報ページ
+-------------------------*/
+.p-recruit {
+  padding: 40px 0 48px;
+  background-color: var(--color-white);
+}
+
+.p-recruit__intro {
+  padding-inline: 4vw;
+  text-align: center;
+}
+
+.p-recruit__text {
+  margin-top: 16px;
+  font-size: clamp(12px, 3.4vw, 22px);
+  font-weight: 700;
+  line-height: 1.8;
+  letter-spacing: 0.1em;
+  color: var(--color-dark);
+}
+
+.p-recruit__points {
+  margin: 28px 7.5vw 0;
+}
+
+.p-recruit__points img {
+  width: 100%;
+  height: auto;
+}
+
+/* SP は特長と表の間に区切り線 */
+.p-recruit__table {
+  margin: 28px 9vw 0;
+  padding-top: 28px;
+  border-top: 3px solid var(--color-gray);
+}
+
+.p-recruit__interview {
+  margin: 20px 6vw 0;
+}
+
+.p-recruit__interview .c-circle-list {
+  margin-top: 16px;
+}
+
+.p-recruit__tel {
+  margin: 32px 7vw 0;
+}
+
+@media (min-width: 1024px) {
+  .p-recruit {
+    padding: 2vw 0 2vw;
+  }
+
+  .p-recruit__text {
+    margin-top: 1.4vw;
+    font-size: clamp(14px, 1.8vw, 26px);
+    line-height: 1.8;
+  }
+
+  .p-recruit__points {
+    margin: 4.4vw 10.4vw 0;
+  }
+
+  .p-recruit__table {
+    margin: 3.4vw 10.4vw 0 10.4vw;
+    padding-top: 0;
+    border: 0;
+  }
+
+  .p-recruit__interview {
+    margin: 4.4vw 9vw 0 9.5vw;
+  }
+
+  .p-recruit__interview .c-circle-list {
+    margin-top: 2.2vw;
+  }
+
+  .p-recruit__tel {
+    margin: 2.6vw 10.6vw 2vw;
+  }
+}
+
+/*-------------------------
+  c-interview-viewer：インタビューの切り替え表示
+  SP：社員の一覧を並べ、選んだ社員のインタビューをそのカードの直下に開く
+      （一覧と本文の入れ物を display: contents にし、order で交互に並べる）
+  PC：選んだ社員のインタビューを上に大きく表示。下に丸印と社員の一覧
+-------------------------*/
+.c-interview-viewer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.c-interview-viewer__panels,
+.c-interview-viewer__list {
+  display: contents;
+}
+
+.c-interview-viewer__list > * {
+  order: calc(var(--item, 1) * 2);
+}
+
+.c-interview-viewer__panels > * {
+  order: calc(var(--item, 1) * 2 + 1);
+}
+
+.c-interview-viewer__panels > :not(.is-open) {
+  display: none;
+}
+
+.c-interview-viewer__panels > .is-open {
+  animation: interview-open 0.5s var(--ease-out) both;
+}
+
+@keyframes interview-open {
+  from {
+    opacity: 0;
+    translate: 0 -12px;
+  }
+}
+
+.c-interview-viewer__dots {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .c-interview-viewer {
+    display: block;
+  }
+
+  /* 全員分を同じ位置に重ね、高さは一番長い人に合わせる（切り替えで下がガタつかない） */
+  .c-interview-viewer__panels {
+    display: grid;
+  }
+
+  .c-interview-viewer__panels > * {
+    grid-area: 1 / 1;
+  }
+
+  .c-interview-viewer__panels > :not(.is-open) {
+    display: grid;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .c-interview-viewer__panels > .is-open {
+    animation: none;
+    transition: opacity 0.5s var(--ease-out);
+  }
+
+  .c-interview-viewer__dots {
+    display: flex;
+    justify-content: center;
+    gap: 1.7vw;
+    margin-top: 1.9vw;
+  }
+
+  .c-interview-viewer__dot {
+    display: block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--color-white);
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+  }
+
+  .c-interview-viewer__dot:hover,
+  .c-interview-viewer__dot:focus-visible {
+    background-color: var(--color-main-light);
+  }
+
+  .c-interview-viewer__dot.is-current {
+    background-color: var(--color-main-bright);
+  }
+
+  .c-interview-viewer__list {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1.2vw;
+    margin-top: 2.4vw;
+  }
+}
+
+/*-------------------------
+  c-interview：社員インタビュー本文（写真＋プロフィール＋Q&A）
+  SP：写真の右に見出しとプロフィール、下に Q&A
+  PC：見出しの下に写真とプロフィール、右に Q&A
+-------------------------*/
+.c-interview {
+  display: grid;
+  grid-template-columns: minmax(0, 48fr) minmax(0, 52fr);
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "photo label"
+    "photo profile"
+    "qa qa";
+  align-content: start;
+  column-gap: 16px;
+  padding: 22px 20px 28px;
+  border: 3px solid var(--color-main-bright);
+  background-color: var(--color-white);
+  color: var(--color-dark);
+}
+
+.c-interview__label {
+  grid-area: label;
+  display: grid;
+  line-height: 1.1;
+  color: var(--color-main-bright);
+}
+
+.c-interview__label-en {
+  font-size: clamp(22px, 6.6vw, 50px);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.c-interview__label-ja {
+  margin-top: 2px;
+  font-size: clamp(10px, 3vw, 18px);
+  font-weight: 700;
+}
+
+.c-interview__photo {
+  grid-area: photo;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 48 / 55;
+  object-fit: cover;
+}
+
+.c-interview__profile {
+  grid-area: profile;
+  align-self: end;
+  padding-top: 12px;
+}
+
+.c-interview__profile-label {
+  font-size: clamp(12px, 3.4vw, 26px);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #b5b5b6;
+}
+
+.c-interview__name {
+  margin-top: 4px;
+  font-size: clamp(13px, 3.8vw, 30px);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  color: var(--color-main-bright);
+}
+
+.c-interview__honorific {
+  margin-left: 0.15em;
+  font-size: 0.65em;
+}
+
+.c-interview__meta {
+  margin-top: 14px;
+  font-size: clamp(10px, 2.8vw, 16px);
+  line-height: 1.7;
+}
+
+.c-interview__meta div {
+  display: flex;
+}
+
+.c-interview__meta dt::after {
+  content: "：";
+}
+
+.c-interview__qa {
+  grid-area: qa;
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.c-interview__question {
+  font-size: clamp(11px, 3.1vw, 17px);
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--color-main-bright);
+}
+
+.c-interview__answer {
+  margin-top: 6px;
+  padding-left: 1em;
+  font-size: clamp(11px, 2.9vw, 16px);
+  line-height: 1.75;
+}
+
+@media (min-width: 1024px) {
+  .c-interview {
+    grid-template-columns: minmax(0, 27.5fr) minmax(0, 63fr);
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas:
+      "label label"
+      "photo qa"
+      "profile qa";
+    column-gap: 4.2vw;
+    padding: 2.4vw 4.2vw 3.4vw 4.6vw;
+  }
+
+  .c-interview__label {
+    display: flex;
+    align-items: baseline;
+    gap: 1.2vw;
+  }
+
+  .c-interview__label-en {
+    font-size: clamp(32px, 3.6vw, 56px);
+  }
+
+  .c-interview__label-ja {
+    font-size: clamp(12px, 1.25vw, 18px);
+  }
+
+  .c-interview__photo {
+    margin-top: 1.6vw;
+    aspect-ratio: 373 / 430;
+  }
+
+  .c-interview__profile {
+    align-self: start;
+    margin-top: 1.4vw;
+    padding-top: 0;
+  }
+
+  .c-interview__profile-label {
+    font-size: clamp(16px, 1.75vw, 26px);
+  }
+
+  .c-interview__name {
+    margin-top: 0.8vw;
+    font-size: clamp(20px, 2vw, 30px);
+    letter-spacing: 0.06em;
+  }
+
+  .c-interview__meta {
+    margin-top: 3.4vw;
+    font-size: clamp(12px, 1.1vw, 16px);
+  }
+
+  .c-interview__qa {
+    gap: 1.8vw;
+    margin-top: 1.9vw;
+  }
+
+  .c-interview__question {
+    font-size: clamp(13px, 1.15vw, 17px);
+  }
+
+  .c-interview__answer {
+    margin-top: 0.6vw;
+    padding-left: 1.6em;
+    font-size: clamp(12px, 1.1vw, 16px);
+  }
+}
+
+/*-------------------------
+  c-staff-card：社員カード（写真＋プロフィール）。選択中は is-current で青い枠
+  SP：写真の右にプロフィール / PC：写真の下にプロフィール
+-------------------------*/
+.c-staff-card {
+  display: grid;
+  grid-template-columns: minmax(0, 42fr) minmax(0, 58fr);
+  align-items: center;
+  gap: 7%;
+  width: 100%;
+  padding: 12px 14px;
+  border: 3px solid #c9caca;
+  background-color: var(--color-white);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color var(--transition-speed);
+  scroll-margin-top: calc(var(--header-height) + 12px);
+}
+
+.c-staff-card:hover,
+.c-staff-card:focus-visible {
+  border-color: var(--color-main-light);
+}
+
+.c-staff-card.is-current {
+  border-color: var(--color-main-bright);
+}
+
+.c-staff-card__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 731 / 458;
+  object-fit: cover;
+}
+
+.c-staff-card__body {
+  display: grid;
+  gap: 2px;
+}
+
+.c-staff-card__label {
+  font-size: clamp(9px, 2.6vw, 14px);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #b5b5b6;
+}
+
+.c-staff-card__name {
+  font-size: clamp(14px, 4vw, 22px);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--color-main-bright);
+}
+
+.c-staff-card__honorific {
+  margin-left: 0.1em;
+  font-size: 0.65em;
+}
+
+.c-staff-card__join {
+  font-size: clamp(9px, 2.4vw, 13px);
+  font-weight: 700;
+  color: var(--color-dark);
+}
+
+@media (min-width: 1024px) {
+  .c-staff-card {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: 1.2vw;
+    height: 100%;
+    padding: 1.8vw 1.9vw 2vw;
+  }
+
+  .c-staff-card__img {
+    aspect-ratio: 553 / 794;
+    transition: opacity var(--transition-speed);
+  }
+
+  .c-staff-card:hover .c-staff-card__img {
+    opacity: 0.85;
+  }
+
+  .c-staff-card__label {
+    font-size: clamp(10px, 0.9vw, 14px);
+  }
+
+  .c-staff-card__name {
+    font-size: clamp(14px, 1.5vw, 22px);
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
+
+  .c-staff-card__join {
+    font-size: clamp(10px, 0.85vw, 13px);
+  }
+}
+
+/*-------------------------
+  p-interview：社員インタビューページ
+-------------------------*/
+.p-interview {
+  padding-bottom: 40px;
+  background-color: #e6e6e6;
+}
+
+.p-interview__intro {
+  padding: 40px 4vw 32px;
+  background-color: var(--color-white);
+  text-align: center;
+}
+
+.p-interview__text {
+  margin-top: 8px;
+  font-size: clamp(11px, 3.2vw, 26px);
+  font-weight: 700;
+  line-height: 1.8;
+  letter-spacing: 0.06em;
+  color: var(--color-dark);
+}
+
+.p-interview__viewer {
+  padding: 20px 5.3vw 0;
+}
+
+.p-interview__tel {
+  margin: 40px 7vw 0;
+}
+
+@media (min-width: 1024px) {
+  .p-interview {
+    padding-bottom: 4.2vw;
+  }
+
+  .p-interview__intro {
+    padding: 0.4vw 4vw 2.8vw;
+  }
+
+  .p-interview__text {
+    margin-top: 0.8vw;
+    font-size: clamp(16px, 1.8vw, 26px);
+    letter-spacing: 0.14em;
+  }
+
+  .p-interview__viewer {
+    padding: 2.9vw 2.4vw 0 2.8vw;
+  }
+
+  .p-interview__tel {
+    margin: 4.2vw 10.6vw 0 9.6vw;
+  }
+}
+
+/*-------------------------
+  c-link-grid：リンクのタイルを並べる（SP 2 列 / PC 3 列）
+  c-link-tile：英字＋和文のリンク。ホバーで青い面が斜めに差し込む
+-------------------------*/
+.c-link-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.c-link-tile {
+  position: relative;
+  display: grid;
+  gap: 2px;
+  padding: 16px 14px 18px;
+  overflow: hidden;
+  border: 2px solid var(--color-gray);
+  background-color: var(--color-white);
+  text-align: left;
+  isolation: isolate;
+  transition:
+    border-color var(--transition-speed),
+    color var(--transition-speed);
+}
+
+/* ホバーで左から差し込む青い面（斜めの端） */
+.c-link-tile::before {
+  content: "";
+  position: absolute;
+  inset: 0 -20% 0 0;
+  z-index: -1;
+  background-color: var(--color-main);
+  clip-path: polygon(0 0, 100% 0, calc(100% - 3em) 100%, 0 100%);
+  translate: -101% 0;
+  transition: translate 0.5s var(--ease-out);
+}
+
+/* 右下の矢印（c-button と同じ形） */
+.c-link-tile::after {
+  content: "";
+  position: absolute;
+  right: 14px;
+  bottom: 16px;
+  width: 28px;
+  height: 5px;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: skewX(60deg);
+  transition: translate var(--transition-speed) var(--ease-out);
+}
+
+.c-link-tile__en {
+  font-size: clamp(15px, 4.4vw, 22px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  color: var(--color-main);
+  transition: color var(--transition-speed);
+}
+
+.c-link-tile__ja {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-dark);
+  transition: color var(--transition-speed);
+}
+
+.c-link-tile:hover,
+.c-link-tile:focus-visible {
+  border-color: var(--color-main);
+  color: var(--color-white);
+}
+
+.c-link-tile:hover::before,
+.c-link-tile:focus-visible::before {
+  translate: 0 0;
+}
+
+.c-link-tile:hover::after,
+.c-link-tile:focus-visible::after {
+  translate: 6px 0;
+}
+
+.c-link-tile:hover .c-link-tile__en,
+.c-link-tile:hover .c-link-tile__ja,
+.c-link-tile:focus-visible .c-link-tile__en,
+.c-link-tile:focus-visible .c-link-tile__ja {
+  color: var(--color-white);
+}
+
+@media (min-width: 1024px) {
+  .c-link-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .c-link-tile {
+    padding: 22px 24px 24px;
+  }
+
+  .c-link-tile::after {
+    right: 24px;
+    bottom: 26px;
+    width: 40px;
+  }
+
+  .c-link-tile__en {
+    font-size: clamp(18px, 1.6vw, 24px);
+  }
+
+  .c-link-tile__ja {
+    font-size: 12px;
+  }
+}
+
+/*-------------------------
+  p-not-found：404 ページ
+-------------------------*/
+.p-not-found {
+  position: relative;
+  overflow: hidden;
+  padding: 48px 0 72px;
+  background-color: var(--color-white);
+}
+
+.p-not-found__inner {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+/* 背景の大きな数字（中身より奥に置く） */
+.p-not-found__code {
+  position: absolute;
+  top: -0.12em;
+  left: 50%;
+  z-index: 0;
+  translate: -50% 0;
+  font-size: 40vw;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: #f2f3f3;
+  pointer-events: none;
+  user-select: none;
+}
+
+.p-not-found__lead,
+.p-not-found__text,
+.p-not-found__button,
+.p-not-found__nav {
+  position: relative;
+}
+
+.p-not-found__text {
+  margin-top: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 2;
+  color: var(--color-dark);
+}
+
+.p-not-found__button {
+  margin-top: 32px;
+  color: var(--color-dark);
+}
+
+.p-not-found__nav {
+  width: 100%;
+  margin-top: 48px;
+}
+
+@media (min-width: 1024px) {
+  .p-not-found {
+    padding: 4.4vw 0 6.4vw;
+  }
+
+  .p-not-found__code {
+    top: -0.16em;
+    font-size: clamp(240px, 24vw, 360px);
+  }
+
+  .p-not-found__text {
+    margin-top: 28px;
+    font-size: 16px;
+  }
+
+  .p-not-found__button {
+    margin-top: 40px;
+  }
+
+  .p-not-found__nav {
+    max-width: 960px;
+    margin-top: 72px;
+  }
+}
+
+/*-------------------------
+  c-article-list：条文の一覧（規約・ポリシーなど）
+  c-article：「第◯条」＋見出し、本文。見出しの下線に青い斜めのアクセント
+-------------------------*/
+.c-article-list {
+  display: grid;
+  gap: 40px;
+}
+
+.c-article__title {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--color-gray);
+  line-height: 1.4;
+}
+
+.c-article__title::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 2px;
+  width: 48px;
+  height: 4px;
+  background-color: var(--color-main);
+  transform: skewX(-40deg);
+}
+
+.c-article__num {
+  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-main);
+}
+
+.c-article__name {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--color-dark);
+}
+
+.c-article__body {
+  margin-top: 16px;
+  font-size: 14px;
+  line-height: 2;
+  color: var(--color-dark);
+}
+
+.c-article__body > * + * {
+  margin-top: 1em;
+}
+
+.c-article__list {
+  display: grid;
+  gap: 4px;
+  padding: 16px 20px;
+  background-color: #f4f5f5;
+}
+
+.c-article__list li {
+  position: relative;
+  padding-left: 1.2em;
+}
+
+/* 先頭の小さな青い四角 */
+.c-article__list li::before {
+  content: "";
+  position: absolute;
+  top: calc(1em - 3px);
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-main);
+}
+
+@media (min-width: 1024px) {
+  .c-article-list {
+    gap: 56px;
+  }
+
+  .c-article__title {
+    gap: 4px 20px;
+    padding-bottom: 14px;
+  }
+
+  .c-article__title::after {
+    width: 72px;
+  }
+
+  .c-article__num {
+    font-size: 15px;
+  }
+
+  .c-article__name {
+    font-size: 22px;
+  }
+
+  .c-article__body {
+    margin-top: 20px;
+    font-size: 15px;
+  }
+
+  .c-article__list {
+    padding: 20px 28px;
+  }
+}
+
+/*-------------------------
+  p-privacy：プライバシーポリシーページ
+-------------------------*/
+.p-privacy {
+  padding: 48px 0 64px;
+  background-color: var(--color-white);
+}
+
+.p-privacy__inner {
+  max-width: calc(960px + var(--inner-padding) * 2);
+}
+
+@media (min-width: 1024px) {
+  .p-privacy {
+    padding: 5vw 0 6.4vw;
+  }
+}
+
+/*-------------------------
+  p-thanks：送信完了ページ
+-------------------------*/
+.p-thanks {
+  padding: 48px 0 72px;
+  background-color: var(--color-white);
+}
+
+.p-thanks__inner {
+  display: grid;
+  justify-items: center;
+  max-width: calc(960px + var(--inner-padding) * 2);
+  text-align: center;
+}
+
+.p-thanks__text {
+  margin-top: 24px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 2;
+  color: var(--color-dark);
+}
+
+.p-thanks__text > * + * {
+  margin-top: 1em;
+}
+
+/* 確認メールが届かないときの案内（左端に青い線） */
+.p-thanks__note {
+  width: 100%;
+  margin-top: 36px;
+  padding: 20px 20px 22px;
+  border-left: 4px solid var(--color-main);
+  background-color: #f4f5f5;
+  font-size: 13px;
+  line-height: 1.9;
+  text-align: left;
+  color: var(--color-dark);
+}
+
+.p-thanks__note > * + * {
+  margin-top: 0.6em;
+}
+
+.p-thanks__note-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-main);
+}
+
+.p-thanks__tel {
+  width: 100%;
+  margin-top: 32px;
+}
+
+.p-thanks__button {
+  margin-top: 40px;
+  color: var(--color-dark);
+}
+
+@media (min-width: 1024px) {
+  .p-thanks {
+    padding: 5vw 0 6.4vw;
+  }
+
+  .p-thanks__text {
+    margin-top: 32px;
+    font-size: 16px;
+  }
+
+  .p-thanks__note {
+    margin-top: 48px;
+    padding: 28px 36px 30px;
+    font-size: 15px;
+  }
+
+  .p-thanks__note-title {
+    font-size: 17px;
+  }
+
+  .p-thanks__tel {
+    margin-top: 40px;
+    padding-block: 40px;
+  }
+
+  .p-thanks__button {
+    margin-top: 56px;
+  }
+}
+
+/*-------------------------
+  c-contact-band：お問い合わせ導線＋SNS バナー（下層ページ共通）
+-------------------------*/
+.c-contact-band {
+  background-color: #727171;
+  color: var(--color-white);
+}
+
+.c-contact-band__body {
+  padding: 48px 7.5vw 56px;
+}
+
+.c-contact-band__lead {
+  margin-top: 24px;
+  font-size: clamp(15px, 4.2vw, 18px);
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.c-contact-band__text {
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.c-contact-band__button {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.c-contact-band__sns {
+  padding: 28px 6% 32px;
+  background-color: var(--color-gray);
+}
+
+@media (min-width: 1024px) {
+  .c-contact-band {
+    display: grid;
+    grid-template-columns: minmax(0, 28vw) minmax(0, 1fr);
+    align-items: center;
+    padding: 2.4vw 4vw 2.4vw 10vw;
+    background-color: var(--color-dark);
+  }
+
+  .c-contact-band__body {
+    padding: 0;
+  }
+
+  .c-contact-band__lead {
+    margin-top: 12px;
+    font-size: clamp(14px, 1.15vw, 18px);
+  }
+
+  .c-contact-band__text {
+    margin-top: 4px;
+    font-size: 11px;
+  }
+
+  .c-contact-band__button {
+    display: inline-flex;
+    min-width: min(100%, 320px);
+    margin-top: 24px;
+  }
+
+  /* 左に白い斜線の区切り */
+  .c-contact-band__sns {
+    position: relative;
+    padding: 0 0 0 7vw;
+    background: none;
+  }
+
+  .c-contact-band__sns::before {
+    content: "";
+    position: absolute;
+    top: -8%;
+    bottom: -8%;
+    left: 4vw;
+    width: 8vw;
+    background: linear-gradient(
+      to bottom right,
+      transparent calc(50% - 1px),
+      var(--color-white) calc(50% - 1px),
+      var(--color-white) calc(50% + 0px),
+      transparent calc(50% + 0px)
+    );
+  }
+}
+
+/*=========================================================
+  Project
+=========================================================*/
+
+/*-------------------------
+  p-top-visual：KV + ABOUT（追従ロゴの範囲）
+-------------------------*/
+.p-top-visual {
+  position: relative;
+}
+
+/* ロゴが動ける範囲。下端＝ABOUT のロゴ位置 */
+.p-top-visual__logo-track {
+  position: absolute;
+  /* --logo-stop は JS が ABOUT のロゴ位置から算出（未設定時は ABOUT 下余白） */
+  inset: calc(var(--header-height) + var(--logo-offset)) 0
+    var(--logo-stop, var(--about-pb));
+  z-index: var(--z-logo);
+  pointer-events: none;
+}
+
+.p-top-visual__logo-track .c-logo-mark {
+  position: sticky;
+  top: calc(var(--header-height) + var(--logo-offset));
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: var(--inner-padding);
+}
+
+/*-------------------------
+  p-hero
+-------------------------*/
+.p-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-start;
+  overflow: hidden;
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.p-hero__video {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 文字の可読性用グラデーション＋右下の青い斜め帯 */
+.p-hero::before,
+.p-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.p-hero::before {
+  background: linear-gradient(
+    90deg,
+    rgb(0 0 0 / 0.65) 0%,
+    rgb(0 0 0 / 0.1) 70%
+  );
+}
+
+.p-hero::after {
+  /*
+    SP：右下の三角。底辺 --hero-triangle、高さは底辺 × 1.636（斜めの角度は他の装飾と共通）
+    右下の KUBOTA KOUGAKU MOVE（文字・線）が収まるよう最小 180px
+  */
+  --hero-triangle: max(180px, 30vw);
+
+  /* 右端の青 → 左へ濃紺 */
+  background: linear-gradient(
+    to left,
+    var(--color-main-dark) 0%,
+    color-mix(in srgb, var(--color-main-dark) 65%, #000) var(--hero-triangle)
+  );
+  clip-path: polygon(
+    100% calc(100% - var(--hero-triangle) * 1.636),
+    100% 100%,
+    calc(100% - var(--hero-triangle)) 100%
+  );
+}
+
+@media (min-width: 768px) {
+  .p-hero {
+    min-height: 100svh;
+  }
+
+  .p-hero::after {
+    background: linear-gradient(
+      200deg,
+      rgb(74 120 192 / 0) 30%,
+      var(--color-main-dark) 100%
+    );
+    clip-path: polygon(100% 45%, 100% 100%, 80% 100%);
+  }
+}
+
+.p-hero__inner {
+  width: 100%;
+  padding-top: calc(var(--header-height) + var(--logo-offset));
+  padding-bottom: 72px;
+}
+
+.p-hero__catch {
+  margin-top: clamp(24px, 7vw, 72px);
+  font-size: clamp(16px, 4.8vw, 36px);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.p-hero__lead {
+  margin-top: 32px;
+  font-size: 11px;
+  line-height: 2.5;
+  letter-spacing: 0.08em;
+}
+
+.p-hero__scroll {
+  bottom: 40px;
+}
+
+/* 右下の KUBOTA KOUGAKU MOVE：上に短い線、MOVE の左に長い線 */
+.p-hero__move {
+  position: absolute;
+  right: 16px;
+  bottom: 24px;
+  display: grid;
+  justify-items: end;
+  gap: 4px;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 2;
+  letter-spacing: 0.2em;
+}
+
+.p-hero__move::before {
+  content: "";
+  width: 4em;
+  height: 1px;
+  margin-bottom: 4px;
+  background-color: currentColor;
+}
+
+.p-hero__move-text--line {
+  display: flex;
+  align-items: center;
+  gap: 1.2em;
+}
+
+.p-hero__move-text--line::before {
+  content: "";
+  width: 72px;
+  height: 1px;
+  background-color: currentColor;
+}
+
+@media (min-width: 1024px) {
+  .p-hero__move {
+    right: 40px;
+    bottom: 40px;
+    gap: 6px;
+    font-size: 10px;
+  }
+
+  .p-hero__move-text--line::before {
+    width: 80px;
+  }
+
+  .p-hero__lead {
+    font-size: 16px;
+  }
+}
+
+/*-------------------------
+  p-about
+-------------------------*/
+.p-about {
+  position: relative;
+  isolation: isolate;
+  padding-block: 32px var(--about-pb);
+  background-color: var(--color-white);
+  color: var(--color-dark);
+}
+
+.p-about__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.p-about__text {
+  margin-top: 32px;
+  font-size: 12px;
+  line-height: 2.2;
+  letter-spacing: 0.08em;
+}
+
+.p-about__scroll {
+  bottom: 24px;
+}
+
+@media (min-width: 1024px) {
+  .p-about {
+    padding-top: 80px;
+    background-color: var(--color-white);
+  }
+
+  /* 左側のグレーの斜め面 */
+  .p-about::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-color: var(--color-gray);
+    clip-path: polygon(0 0, 59% 0, 42% 100%, 0 100%);
+  }
+
+  .p-about__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: end;
+    gap: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .p-about__text {
+    font-size: 13px;
+  }
+}
+
+/*-------------------------
+  p-top-contact
+-------------------------*/
+.p-top-contact {
+  overflow-x: clip; /* 画面端まで広げたバナー帯のはみ出し防止 */
+  padding-top: 48px;
+  background-color: var(--color-white);
+  color: var(--color-dark);
+  scroll-margin-top: var(--header-height);
+}
+
+@media (min-width: 1024px) {
+  .p-top-contact {
+    padding-block: 32px;
+    background-color: #e6e6e6;
+  }
+}
+
+.p-top-contact__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 40px;
+}
+
+@media (min-width: 1024px) {
+  .p-top-contact__inner {
+    grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr);
+    align-items: center;
+  }
+}
+
+.p-top-contact__lead {
+  margin-top: 20px;
+  font-size: clamp(15px, 1.4vw, 18px);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.p-top-contact__text {
+  margin-top: 8px;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+}
+
+.p-top-contact__body .c-cta-button {
+  margin-top: 24px;
+}
+
+/* SP：SNS バナーは画面幅いっぱいのグレー帯 */
+.p-top-contact__sns {
+  margin-inline: calc(50% - 50vw);
+  padding: 32px var(--inner-padding) 40px;
+  background-color: var(--color-gray);
+}
+
+/* PC：右は画面の端まで広げ、左は少し本文側へ */
+@media (min-width: 1024px) {
+  .p-top-contact__sns {
+    margin-right: calc(
+      -1 * (clamp(24px, 6vw, 80px) + max(0px, (100vw - 1280px) / 2))
+    );
+    margin-left: -3vw;
+    padding: 0;
+    background: none;
+  }
+}
+
+/*=========================================================
+  Utility
+=========================================================*/
+
+/* スクロールでフェードイン（JS で .is-inview を付与） */
+.is-js .u-fade-left,
+.is-js .u-fade-right,
+.is-js .u-fade-up {
+  opacity: 0;
+  transition:
+    opacity 1s var(--ease-out),
+    translate 1s var(--ease-out);
+  transition-delay: var(--delay, 0s);
+}
+
+.is-js .u-fade-left {
+  translate: -80px 0;
+}
+
+.is-js .u-fade-right {
+  translate: 80px 0;
+}
+
+.is-js .u-fade-up {
+  translate: 0 40px;
+}
+
+.is-js .u-fade-left.is-inview,
+.is-js .u-fade-right.is-inview,
+.is-js .u-fade-up.is-inview {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/*
+  SP のみ左からスライドイン
+  ※ 要素が画面外に出きると IntersectionObserver が反応しないため、移動量は要素幅の 40% に留める
+*/
+@media (max-width: 767px) {
+  .is-js .u-slide-left-sp {
+    opacity: 0;
+    translate: -40% 0;
+    transition:
+      opacity 0.8s ease,
+      translate 1s var(--ease-out);
+    transition-delay: var(--delay, 0s);
+  }
+
+  .is-js .u-slide-left-sp.is-inview {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* 文節のまとまりを保ち、折り返し位置をそろえる */
+.u-inline-block {
+  display: inline-block;
+}
+
+.u-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+}
+
+@media (max-width: 767px) {
+  .u-hidden-sp {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .u-hidden-pc {
+    display: none !important;
+  }
+}
+
+/* ドロワー展開時のスクロール固定 */
+body.is-drawer-open {
+  overflow: hidden;
+}

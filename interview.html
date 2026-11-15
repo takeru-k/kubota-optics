@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>INTERVIEW 社員紹介｜株式会社 久保田光学</title>
+    <meta
+      name="description"
+      content="株式会社久保田光学で働く社員のインタビュー。CG・ペレット・研磨・芯取・検査、それぞれの仕事や思いを本人の言葉で紹介します。"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- ========== ヘッダー（常に追従） ========== -->
+    <header class="l-header js-header">
+      <div class="l-header__inner">
+        <a class="l-header__logo" href="index.html">株式会社 久保田光学</a>
+
+        <button
+          class="c-hamburger js-hamburger"
+          type="button"
+          aria-controls="global-nav"
+          aria-expanded="false"
+          aria-label="メニューを開く"
+        >
+          <span class="c-hamburger__line"></span>
+        </button>
+
+        <nav
+          class="l-header__nav js-drawer"
+          id="global-nav"
+          aria-label="グローバルナビゲーション"
+        >
+          <ul class="c-nav" role="list">
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="index.html">HOME</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="skill.html">SKILL</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="facility.html">FACILITY</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="company.html">COMPANY</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="contact.html">CONTACT</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="recruit.html">RECRUIT</a>
+            </li>
+            <li class="c-nav__item">
+              <a
+                class="c-nav__link is-current"
+                href="interview.html"
+                aria-current="page"
+                >INTERVIEW</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="l-main">
+      <!-- ========== 下層ページ KV ========== -->
+      <div class="c-page-hero">
+        <img
+          class="c-page-hero__img"
+          src="images/interview/hero.png"
+          alt=""
+          width="2150"
+          height="494"
+        />
+        <div class="c-page-hero__inner">
+          <h1 class="c-page-hero__title">
+            <span class="c-page-hero__en">INTERVIEW</span>
+            <span class="c-page-hero__ja">社員紹介</span>
+          </h1>
+        </div>
+        <p class="c-scroll-sign c-page-hero__scroll" aria-hidden="true">SCROLL</p>
+      </div>
+
+      <!-- ページ内ナビが追従する範囲 -->
+      <div class="l-sticky-area">
+        <!-- ========== 採用情報／社員インタビュー（PC：スクロールに追従） ========== -->
+        <nav class="c-page-nav" aria-label="採用情報のナビゲーション">
+          <ul class="c-page-nav__list" role="list">
+            <li class="c-page-nav__item">
+              <a class="c-page-nav__link" href="recruit.html">
+                <img
+                  src="images/recruit/nav-recruit.png"
+                  alt="RECRUIT 採用情報"
+                  width="1434"
+                  height="219"
+                />
+              </a>
+            </li>
+            <li class="c-page-nav__item">
+              <a class="c-page-nav__link" href="#interview" aria-current="page">
+                <img
+                  src="images/recruit/nav-interview.png"
+                  alt="INTERVIEW 社員インタビュー"
+                  width="1434"
+                  height="219"
+                />
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <section class="l-anchor p-interview" id="interview" aria-labelledby="interview-heading">
+          <!-- リード -->
+          <div class="p-interview__intro">
+            <h2 class="c-lead c-lead--large" id="interview-heading">
+              久保田光学で<em class="c-lead__em">働く人</em>たち
+            </h2>
+            <p class="p-interview__text">
+              <span class="u-inline-block">それぞれの仕事や思いを、</span><span class="u-inline-block">本人の言葉で紹介します。</span>
+            </p>
+          </div>
+
+          <!--
+            社員インタビュー
+            PC：選んだ社員のインタビューを上に大きく表示（一覧の下に並ぶ社員を選んで切り替え）
+            SP：社員の一覧を表示し、タップした社員のインタビューをその下に開く
+          -->
+          <div class="c-interview-viewer p-interview__viewer js-interview-viewer">
+            <div class="c-interview-viewer__panels">
+              <!-- 1人目 -->
+              <article class="c-interview is-open js-interview-panel" id="interview-1" style="--item: 1" aria-labelledby="interview-1-name">
+                <p class="c-interview__label" aria-hidden="true">
+                  <span class="c-interview__label-en">INTERVIEW</span>
+                  <span class="c-interview__label-ja">社員インタビュー</span>
+                </p>
+                <img
+                  class="c-interview__photo"
+                  src="images/interview/photo-01.png"
+                  alt=""
+                  width="553"
+                  height="794"
+                  loading="lazy"
+                />
+                <div class="c-interview__profile">
+                  <p class="c-interview__profile-label">PROFILE</p>
+                  <h3 class="c-interview__name" id="interview-1-name">CG担当者 K<small class="c-interview__honorific">さん</small></h3>
+                  <dl class="c-interview__meta">
+                    <div><dt>入社</dt><dd>2004年4月入社</dd></div>
+                    <div><dt>所属</dt><dd>CG</dd></div>
+                  </dl>
+                </div>
+                <dl class="c-interview__qa">
+                  <div class="c-interview__qa-item">
+                    <dt class="c-interview__question">Q.普段はどのような仕事をしていますか？</dt>
+                    <dd class="c-interview__answer">
+                    <p>CG加工を担当しています。</p>
+                    <p>光学レンズの材料をダイヤモンドホイールを押し当ててレンズを削り形にします。</p>
+                    </dd>
+                  </div>
+                  <div class="c-interview__qa-item">
+                    <dt class="c-interview__question">Q.会社の特徴について。</dt>
+                    <dd class="c-interview__answer">
+                    <p>レンズ加工に対して手作業で繊細で丁寧な仕事をしている会社だと思います。</p>
+                    </dd>
+                  </div>
+                  <div class="c-interview__qa-item">
+                    <dt class="c-interview__question">Q.仕事の面白さや難しさを感じるのは、どんなときですか？</dt>
+                    <dd class="c-interview__answer">
+                    <p>試作品の加工では、型で形を整えた材料ではなく、円柱を輪切りにしたスライス材から形を作るところに面白さがあります。</p>
+                    <p>一方、半球に近いレンズは普段の方法ではうまく加工できず、さまざまな工夫が必要な点が難しいところでした。</p>
+                    </dd>
+                  </div>
+                  <div class="c-interview__qa-item">
+                    <dt class="c-interview__question">Q.一緒に働く人や、職場の雰囲気について教えてください。</dt>
+                    <dd class="c-interview__answer">
+                    <p>周りの方が自分よりも先輩なので、いろいろな事を教えてもらいアットホームな環境だと思います。</p>
+                    </dd>
+                  </div>
+                  <div class="c-interview__qa-item">
+                    <dt class="c-interview__question">Q.働き方や環境について。</dt>
+                    <dd class="c-interview__answer">
+                    <p>自分はスポーツをやっているので、休みがとりやすい環境は凄くありがたいと思います。</p>
+                    </dd>
+                  </div>
+                  <div class="c-interview__qa-item">
+                    <dt class="c-interview__question">Q.応募を考えている方へ、メッセージをお願いします。</dt>
+                    <dd class="c-interview__answer">
+                    <p>先輩に聞きながら進めることができるので、楽しく頑張れる場所だと思います。</p>
+                    <p>一緒に頑張りましょう！</p>
+                    </dd>
+                  </div>
+                </dl>
+              </article>
+              <!-- 2人目 -->
+              <article class="c-interview js-interview-panel" id="interview-2" style="--item: 2" aria-labelledby="interview-2-name">
+                <p class="c-interview__label" aria-hidden="true">
+                  <span class="c-interview__label-en">INTERVIEW</span>
+                  <span class="c-interview__label-ja">社員インタビュー</span>
+                </p>
+                <img
+                  class="c-interview__photo"
+                  src="images/interview/photo-02.png"
+                  alt=""
+                  width="553"
+                  height="794"
+                  loading="lazy"
+                />
+                <div class="c-interview__profile">
+                  <p class="c-interview__profile-label">PROFILE</p>
+                  <h3 class="c-interview__name" id="interview-2-name">ペレット担当者 M<small class="c-interview__honorific">さん</small></h3>
+                  <dl class="c-interview__meta">
+                    <div><dt>入社</dt><dd>1998年4月入社</dd></div>
+                    <div><dt>所属</dt><dd>ペレット</dd></div>
+                  </dl>
+                </div>
+                <dl class="c-interview__qa">
+                  <div class="c-interview__qa-item">
+                    <dt class="c-interview__question">Q.普段はどのような仕事をしていますか？</dt>
+                    <dd class="c-interview__answer">
+                    <p>ペレット加工を担当しています。入社歴は28年目です。ダイヤモンド砥粒が含まれた2種類のペレットと呼ばれる砥石でレンズの表面を段階的に削っています。</p>
+                    </dd>
+                  </div>
+                  <div class="c-interview__qa-item">
+                    <dt class="c-interview__question">Q.仕事で感じたやりがいなどのエピソードを教えてください。</dt>
+                    <dd class="c-interview__answer">
+                    <p>私たちが磨いたレンズを使用した望遠鏡を使い、大きな月をみんなで見た時には、とても感動しました。</p>
+                    </dd>
+                  </div>
+                  <div class="c-interview__qa-item">
+                    <dt class="c-interview__question">Q.仕事の面白さや難しさを感じるのは、どんなときですか？</dt>
+                    <dd class="c-interview__answer">
+                    <p>何度か微調整しながら加工をしますが、求められている精度からズレずにLOTが加工し終わると、成長や面白さを感じます。厚さや面精度（Newton）を既定の範囲内で加工することや、少しずつ微調整しズレが無いようにすることが難しいです。</p>
+                    </dd>
+                  </div>
+                  <div class="c-interview__qa-item">
+                    <dt class="c-interview__question">Q.一緒に働く人や、職場の雰囲気について教えてください。</dt>
+                    <dd class="c-interview__answer">
+                    <p>長年働いている人達が多いので、ベテランさんからのアドバイスが色々あり聞きやすい環境だと思います。</p>
+                    </dd>
+                  </div>
+                  <div class="c-interview__qa-item">
+                    <dt class="c-interview__question">Q.これから取り組んでみたいことはありますか？</dt>
+                    <dd class="c-interview__answer">
+                    <p>必要な道具などを旋盤を使い加工出来るようになりました。</p>
+                    <p>加工した正確な精度を大事にし、次工程でもスムーズに進めるように引き渡したいです。</p>
+                    </dd>
+                  </div>
+                  <div class="c-interview__qa-item">
+                    <dt class="c-interview__question">Q.応募を考えている方へ、メッセージをお願いします。</dt>
+                    <dd class="c-interview__answer">
+                    <p>入社した際は先輩方が丁寧に教えますので興味のある方は是非一緒に頑張りましょう！！</p>
+                    </dd>
+                  </div>
+                </dl>
+              </article>
+              <!-- 3人目 -->
+              <article class="c-interview js-interview-panel" id="interview-3" style="--item: 3" aria-labelledby="interview-3-name">
+                <p class="c-interview__label" aria-hidden="true">
+                  <span class="c-interview__label-en">INTERVIEW</span>
+                  <span class="c-interview__label-ja">社員インタビュー</span>
+                </p>
+                <img
+                  class="c-interview__photo"
+                  src="images/interview/photo-03.png"
+                  alt=""
+                  width="553"
+                  height="794"
+                  loading="lazy"
+                />
+                <div class="c-interview__profile">
+                  <p class="c-interview__profile-label">PROFILE</p>
+                  <h3 class="c-interview__name" id="interview-3-name">研磨担当者 工場長</h3>
+                  <dl class="c-interview__meta">
+                    <div><dt>入社</dt><dd>2002年4月入社</dd></div>
+                    <div><dt>所属</dt><dd>研磨</dd></div>
+                  </dl>
+                </div>
+                <dl class="c-interview__qa">
+                  <div class="c-interview__qa-item">
+                    <dt class="c-interview__question">Q.普段はどのような仕事をしていますか？</dt>
+                    <dd class="c-interview__answer">
+                    <p>研磨工程を担当しています。</p>
+                    <p>凸凹レンズを研磨剤を使用し表面を磨き上げる仕事です。</p>
+                    </dd>
+                  </div>
+                  <div class="c-interview__qa-item">
+                    <dt class="c-interview__question">Q.仕事で大切にしていることは何ですか？</dt>
+                    <dd class="c-interview__answer">
+                    <p>受注してからの短期間での納品、工程内での高い良品率が強味であり、慣れている作業でも確認を欠かさず、現場での情報共有を大切にしています。一つひとつのレンズの品質を意識し、声をかけ合いながら丁寧に作業を進めています。</p>
+                    </dd>
+                  </div>
+                  <div class="c-interview__qa-item">
+                    <dt class="c-interview__question">Q.仕事の面白さや難しさを感じるのは、どんなときですか？</dt>
+                    <dd class="c-interview__answer">
+                    <p>取引先に、自分で磨いたレンズが直接評価されるので、緊張感もあり、精度を常に維持するという難しさも有りますが、規格内の面精度が出来上がった時の達成感があります。</p>
+                    </dd>
+                  </div>
+                  <div class="c-interview__qa-item">
+                    <dt class="c-interview__question">Q.一緒に働く人や、職場の雰囲気について教えてください。</dt>
+                    <dd class="c-interview__answer">
+                    <p>平均が約45歳ですが、気持ちはとても若い人たちです！</p>
+                    </dd>
+                  </div>
+                  <div class="c-interview__qa-item">
+                    <dt class="c-interview__question">Q.これから取り組んでみたいことはありますか？</dt>
+                    <dd class="c-interview__answer">
+                    <p>工場長になって客観的に物事を考えられるようになり、増産を目標とした個人のスキルアップや、それぞれの仕事の進め方に取り組みたいと感じています。</p>
+                    </dd>
+                  </div>
+                  <div class="c-interview__qa-item">
+                    <dt class="c-interview__question">Q.応募を考えている方へ、メッセージをお願いします。</dt>
+                    <dd class="c-interview__answer">
+                    <p>光学製品は色々な部品で構成されています。レンズも部品ですが大切なパーツです。</p>
+                    <p>一緒にその大切な部品のモノづくりをしてみましょう。</p>
+                    </dd>
+                  </div>
+                </dl>
+              </article>
+              <!-- 4人目 -->
+              <article class="c-interview js-interview-panel" id="interview-4" style="--item: 4" aria-labelledby="interview-4-name">
+                <p class="c-interview__label" aria-hidden="true">
+                  <span class="c-interview__label-en">INTERVIEW</span>
+                  <span class="c-interview__label-ja">社員インタビュー</span>
+                </p>
+                <img
+                  class="c-interview__photo"
+                  src="images/interview/photo-04.png"
+                  alt=""
+                  width="553"
+                  height="794"
+                  loading="lazy"
+                />
+                <div class="c-interview__profile">
+                  <p class="c-interview__profile-label">PROFILE</p>
+                  <h3 class="c-interview__name" id="interview-4-name">芯取担当者 S<small class="c-interview__honorific">さん</small></h3>
+                  <dl class="c-interview__meta">
+                    <div><dt>入社</dt><dd>2000年4月入社</dd></div>
+                    <div><dt>所属</dt><dd>芯取</dd></div>
+                  </dl>
+                </div>
+                <dl class="c-interview__qa">
+                  <div class="c-interview__qa-item">
+                    <dt class="c-interview__question">Q.普段はどのような仕事をしていますか？</dt>
+                    <dd class="c-interview__answer">
+                    <p>芯取で加工、品質管理、スケジュール管理を担当しています。</p>
+                    <p>直径を揃えながらレンズの中心を削って出すお仕事です。</p>
+                    </dd>
+                  </div>
+                  <div class="c-interview__qa-item">
+                    <dt class="c-interview__question">Q.働き方について。</dt>
+                    <dd class="c-interview__answer">
+                    <p>忙しい時は、仕事のことで手一杯になってしまいますが、落ち着いて物事を考えられるようにしていきたいと思います。</p>
+                    </dd>
+                  </div>
+                  <div class="c-interview__qa-item">
+                    <dt class="c-interview__question">Q.仕事の面白さや難しさを感じるのは、どんなときですか？</dt>
+                    <dd class="c-interview__answer">
+                    <p>前後工程の流れを勘案しスケジュール管理を行なう事や、前工程に連絡をとりながら決めることが難しいですが、知識、論理で新規レンズを上手く加工が出来た時には面白さを感じます。</p>
+                    </dd>
+                  </div>
+                  <div class="c-interview__qa-item">
+                    <dt class="c-interview__question">Q.一緒に働く人や、職場の雰囲気について教えてください。</dt>
+                    <dd class="c-interview__answer">
+                    <p>部署内では本音を話したり、冗談を言い合えるような、信頼できる皆さんと共に、仕事をしています。</p>
+                    </dd>
+                  </div>
+                  <div class="c-interview__qa-item">
+                    <dt class="c-interview__question">Q.これから取り組んでみたいことはありますか？</dt>
+                    <dd class="c-interview__answer">
+                    <p>機械的にはまだ難しいですが、Φ200を超える大玉レンズやΦ10以下の小玉レンズに挑戦してみたいと思っています。</p>
+                    </dd>
+                  </div>
+                  <div class="c-interview__qa-item">
+                    <dt class="c-interview__question">Q.応募を考えている方へ、メッセージをお願いします。</dt>
+                    <dd class="c-interview__answer">
+                    <p>職人的な仕事内容なので、短期間での結果にこだわらず、中長期的に一人前になる事を第一に考えて焦らず知識と経験を積み重ねてください。</p>
+                    </dd>
+                  </div>
+                </dl>
+              </article>
+              <!-- 5人目 -->
+              <article class="c-interview js-interview-panel" id="interview-5" style="--item: 5" aria-labelledby="interview-5-name">
+                <p class="c-interview__label" aria-hidden="true">
+                  <span class="c-interview__label-en">INTERVIEW</span>
+                  <span class="c-interview__label-ja">社員インタビュー</span>
+                </p>
+                <img
+                  class="c-interview__photo"
+                  src="images/interview/photo-05.png"
+                  alt=""
+                  width="553"
+                  height="794"
+                  loading="lazy"
+                />
+                <div class="c-interview__profile">
+                  <p class="c-interview__profile-label">PROFILE</p>
+                  <h3 class="c-interview__name" id="interview-5-name">検査担当者 S<small class="c-interview__honorific">さん</small></h3>
+                  <dl class="c-interview__meta">
+                    <div><dt>入社</dt><dd>2015年6月入社</dd></div>
+                    <div><dt>所属</dt><dd>検査</dd></div>
+                  </dl>
+                </div>
+                <dl class="c-interview__qa">
+                  <div class="c-interview__qa-item">
+                    <dt class="c-interview__question">Q.普段はどのような仕事をしていますか？</dt>
+                    <dd class="c-interview__answer">
+                    <p>光学レンズの洗浄・検査を担当しています。</p>
+                    <p>完成したレンズに問題がないか、メーカーごとの基準に沿って確認し、品質を守る仕事です。</p>
+                    </dd>
+                  </div>
+                  <div class="c-interview__qa-item">
+                    <dt class="c-interview__question">Q.仕事で大切にしていることは何ですか？</dt>
+                    <dd class="c-interview__answer">
+                    <p>慣れている作業でも確認を欠かさず、現場での情報共有を大切にしています。</p>
+                    <p>一つひとつのレンズの品質を意識し、声をかけ合いながら丁寧に作業を進めています。</p>
+                    </dd>
+                  </div>
+                  <div class="c-interview__qa-item">
+                    <dt class="c-interview__question">Q.仕事の面白さや難しさを感じるのは、どんなときですか？</dt>
+                    <dd class="c-interview__answer">
+                    <p>レンズの状態や作業の進み具合を見て、流れや優先順位を工夫し、効率よく進められたときです。</p>
+                    <p>経験を重ねる中で、全体の流れを見ながら動けるようになりました。</p>
+                    </dd>
+                  </div>
+                  <div class="c-interview__qa-item">
+                    <dt class="c-interview__question">Q.一緒に働く人や、職場の雰囲気について教えてください。</dt>
+                    <dd class="c-interview__answer">
+                    <p>分からないことや困ったことがあったときに、周りに相談しやすい職場です。</p>
+                    <p>確認や声かけをしながら、丁寧に仕事を進めています。</p>
+                    </dd>
+                  </div>
+                  <div class="c-interview__qa-item">
+                    <dt class="c-interview__question">Q.これから取り組んでみたいことはありますか？</dt>
+                    <dd class="c-interview__answer">
+                    <p>今の仕事について、さらに知識や経験を増やしていきたいです。</p>
+                    <p>正確さを保ちながら、より効率よく仕事ができるようになりたいと思っています。</p>
+                    </dd>
+                  </div>
+                  <div class="c-interview__qa-item">
+                    <dt class="c-interview__question">Q.応募を考えている方へ、メッセージをお願いします。</dt>
+                    <dd class="c-interview__answer">
+                    <p>最初は覚えることが多く、難しいと感じることもあると思います。</p>
+                    <p>分からないことは周りに聞きながら、少しずつ覚えていきましょう。</p>
+                    </dd>
+                  </div>
+                </dl>
+              </article>
+            </div>
+
+            <ul class="c-interview-viewer__dots" role="list">
+              <li><button class="c-interview-viewer__dot is-current js-interview-trigger" type="button" aria-controls="interview-1" aria-label="CG担当者 Kさんのインタビュー" aria-current="true"></button></li>
+              <li><button class="c-interview-viewer__dot js-interview-trigger" type="button" aria-controls="interview-2" aria-label="ペレット担当者 Mさんのインタビュー"></button></li>
+              <li><button class="c-interview-viewer__dot js-interview-trigger" type="button" aria-controls="interview-3" aria-label="研磨担当者 工場長のインタビュー"></button></li>
+              <li><button class="c-interview-viewer__dot js-interview-trigger" type="button" aria-controls="interview-4" aria-label="芯取担当者 Sさんのインタビュー"></button></li>
+              <li><button class="c-interview-viewer__dot js-interview-trigger" type="button" aria-controls="interview-5" aria-label="検査担当者 Sさんのインタビュー"></button></li>
+            </ul>
+
+            <ul class="c-staff-list c-interview-viewer__list" role="list">
+            <li class="c-staff-list__item" style="--item: 1">
+              <button
+                class="c-staff-card is-current js-interview-trigger"
+                type="button"
+                aria-controls="interview-1"
+                aria-expanded="true"
+              >
+                <picture class="c-staff-card__media">
+                  <!-- SP は横長の写真 -->
+                  <source media="(max-width: 1023px)" srcset="images/interview/photo-01-sp.png" width="731" height="458" />
+                  <img
+                    class="c-staff-card__img"
+                    src="images/interview/photo-01.png"
+                    alt=""
+                    width="553"
+                    height="794"
+                    loading="lazy"
+                  />
+                </picture>
+                <span class="c-staff-card__body">
+                  <span class="c-staff-card__label">PROFILE</span>
+                  <span class="c-staff-card__name">CG担当者 K<small class="c-staff-card__honorific">さん</small></span>
+                  <span class="c-staff-card__join">入社：2004年4月入社</span>
+                </span>
+              </button>
+            </li>
+            <li class="c-staff-list__item" style="--item: 2">
+              <button
+                class="c-staff-card js-interview-trigger"
+                type="button"
+                aria-controls="interview-2"
+                aria-expanded="false"
+              >
+                <picture class="c-staff-card__media">
+                  <!-- SP は横長の写真 -->
+                  <source media="(max-width: 1023px)" srcset="images/interview/photo-02-sp.png" width="731" height="458" />
+                  <img
+                    class="c-staff-card__img"
+                    src="images/interview/photo-02.png"
+                    alt=""
+                    width="553"
+                    height="794"
+                    loading="lazy"
+                  />
+                </picture>
+                <span class="c-staff-card__body">
+                  <span class="c-staff-card__label">PROFILE</span>
+                  <span class="c-staff-card__name">ペレット担当者 M<small class="c-staff-card__honorific">さん</small></span>
+                  <span class="c-staff-card__join">入社：1998年4月入社</span>
+                </span>
+              </button>
+            </li>
+            <li class="c-staff-list__item" style="--item: 3">
+              <button
+                class="c-staff-card js-interview-trigger"
+                type="button"
+                aria-controls="interview-3"
+                aria-expanded="false"
+              >
+                <picture class="c-staff-card__media">
+                  <!-- SP は横長の写真 -->
+                  <source media="(max-width: 1023px)" srcset="images/interview/photo-03-sp.png" width="731" height="458" />
+                  <img
+                    class="c-staff-card__img"
+                    src="images/interview/photo-03.png"
+                    alt=""
+                    width="553"
+                    height="794"
+                    loading="lazy"
+                  />
+                </picture>
+                <span class="c-staff-card__body">
+                  <span class="c-staff-card__label">PROFILE</span>
+                  <span class="c-staff-card__name">研磨担当者 工場長</span>
+                  <span class="c-staff-card__join">入社：2002年4月入社</span>
+                </span>
+              </button>
+            </li>
+            <li class="c-staff-list__item" style="--item: 4">
+              <button
+                class="c-staff-card js-interview-trigger"
+                type="button"
+                aria-controls="interview-4"
+                aria-expanded="false"
+              >
+                <picture class="c-staff-card__media">
+                  <!-- SP は横長の写真 -->
+                  <source media="(max-width: 1023px)" srcset="images/interview/photo-04-sp.png" width="731" height="458" />
+                  <img
+                    class="c-staff-card__img"
+                    src="images/interview/photo-04.png"
+                    alt=""
+                    width="553"
+                    height="794"
+                    loading="lazy"
+                  />
+                </picture>
+                <span class="c-staff-card__body">
+                  <span class="c-staff-card__label">PROFILE</span>
+                  <span class="c-staff-card__name">芯取担当者 S<small class="c-staff-card__honorific">さん</small></span>
+                  <span class="c-staff-card__join">入社：2000年4月入社</span>
+                </span>
+              </button>
+            </li>
+            <li class="c-staff-list__item" style="--item: 5">
+              <button
+                class="c-staff-card js-interview-trigger"
+                type="button"
+                aria-controls="interview-5"
+                aria-expanded="false"
+              >
+                <picture class="c-staff-card__media">
+                  <!-- SP は横長の写真 -->
+                  <source media="(max-width: 1023px)" srcset="images/interview/photo-05-sp.png" width="731" height="458" />
+                  <img
+                    class="c-staff-card__img"
+                    src="images/interview/photo-05.png"
+                    alt=""
+                    width="553"
+                    height="794"
+                    loading="lazy"
+                  />
+                </picture>
+                <span class="c-staff-card__body">
+                  <span class="c-staff-card__label">PROFILE</span>
+                  <span class="c-staff-card__name">検査担当者 S<small class="c-staff-card__honorific">さん</small></span>
+                  <span class="c-staff-card__join">入社：2015年6月入社</span>
+                </span>
+              </button>
+            </li>
+            </ul>
+          </div>
+
+          <!-- 電話 -->
+          <div class="c-tel-box p-interview__tel">
+            <p class="c-tel-box__lead">
+              採用情報の<br class="u-hidden-sp" />お問い合わせ
+            </p>
+            <p class="c-tel-box__body">
+              <a class="c-tel-box__number" href="tel:0198284155">TEL 0198-28-4155</a>
+              <span class="c-tel-box__note">受付時間(営業日) 9:00〜17:30</span>
+            </p>
+          </div>
+        </section>
+      </div>
+
+      <!-- ========== お問い合わせ＋SNS ========== -->
+      <section class="c-contact-band" aria-labelledby="contact-heading">
+        <div class="c-contact-band__body">
+          <h2 class="c-section-title c-section-title--light" id="contact-heading">
+            <span class="c-section-title__en">CONTACT</span>
+            <span class="c-section-title__ja">お問い合わせ</span>
+          </h2>
+          <p class="c-contact-band__lead">
+            <span class="u-inline-block">短納期や加工内容についての</span><span class="u-inline-block">ご相談も可能です。</span>
+          </p>
+          <p class="c-contact-band__text">
+            <span class="u-inline-block">仕事のご依頼、ご相談、お見積りなど</span><span class="u-inline-block">お気軽にお問い合わせください。</span>
+          </p>
+          <a class="c-button c-button--light c-contact-band__button" href="contact.html"
+            >お問い合わせはこちら</a
+          >
+        </div>
+
+        <div class="c-contact-band__sns">
+          <ul class="c-banner-list c-banner-list--row" role="list">
+            <li class="c-banner-list__item js-inview u-fade-up">
+              <a
+                class="c-banner"
+                href="https://note.com/kubota_optical"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <picture>
+                  <!-- SP 専用画像 -->
+                  <source
+                    media="(max-width: 767px)"
+                    srcset="images/top/banner-note-sp.png"
+                  />
+                  <img
+                    class="c-banner__img"
+                    src="images/top/banner-note.png"
+                    alt="note｜久保田光学の公式note"
+                    width="1282"
+                    height="535"
+                    loading="lazy"
+                  />
+                </picture>
+              </a>
+            </li>
+            <li
+              class="c-banner-list__item js-inview u-fade-up"
+              style="--delay: 0.15s"
+            >
+              <a
+                class="c-banner"
+                href="https://www.instagram.com/kubota_optics/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <picture>
+                  <!-- SP 専用画像 -->
+                  <source
+                    media="(max-width: 767px)"
+                    srcset="images/top/banner-instagram-sp.png"
+                  />
+                  <img
+                    class="c-banner__img"
+                    src="images/top/banner-instagram.png"
+                    alt="Instagram｜久保田光学の公式インスタグラム"
+                    width="1282"
+                    height="535"
+                    loading="lazy"
+                  />
+                </picture>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <!-- ========== フッター ========== -->
+    <footer class="l-footer">
+      <div class="l-footer__inner l-inner">
+        <div class="l-footer__info">
+          <p class="l-footer__name">株式会社 久保田光学</p>
+          <address class="l-footer__address">
+            岩手県花巻市湯口字二ツ堰13-3
+          </address>
+        </div>
+        <nav class="l-footer__nav" aria-label="フッターナビゲーション">
+          <ul class="c-nav c-nav--sub" role="list">
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="index.html">HOME</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="skill.html">SKILL</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="facility.html">FACILITY</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="company.html">COMPANY</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="contact.html">CONTACT</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="recruit.html">RECRUIT</a>
+            </li>
+            <li class="c-nav__item">
+              <a class="c-nav__link" href="interview.html">INTERVIEW</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <p class="l-footer__copy"><small>&copy; KUBOTA OPTICS.</small></p>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
