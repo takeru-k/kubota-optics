@@ -1099,10 +1099,25 @@ body {
   }
 }
 
-/* 「詳しく見る」ホバーで写真をカラーに */
+/* 「詳しく見る」または写真のホバーで写真をカラーに */
 .c-split:has(.c-button:hover, .c-button:focus-visible)
-  .c-photo-swap__img--color {
+  .c-photo-swap__img--color,
+.c-photo-swap:hover .c-photo-swap__img--color {
   opacity: 1;
+}
+
+/*
+  SP：写真は本文の背面にあるため、本文のタップを写真へ通す
+  （写真は clip-path の斜めの範囲だけが反応する）
+*/
+@media (max-width: 767px) {
+  .c-split:has(a.c-photo-swap) .c-split__body {
+    pointer-events: none;
+  }
+
+  .c-split:has(a.c-photo-swap) .c-split__body a {
+    pointer-events: auto;
+  }
 }
 
 /*-------------------------
@@ -1111,6 +1126,7 @@ body {
 -------------------------*/
 .c-photo-swap {
   position: relative;
+  display: block;
 }
 
 /* <picture> で画像を切り替える場合も img の指定がそのまま効くように */
