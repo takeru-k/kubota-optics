@@ -88,7 +88,6 @@
         <section class="p-hero">
           <video
             class="p-hero__video js-hero-video"
-            src="images/top/hero.mp4"
             poster="images/top/hero-poster.jpg"
             autoplay
             muted
@@ -96,7 +95,15 @@
             playsinline
             preload="metadata"
             aria-hidden="true"
-          ></video>
+          >
+            <!-- SP 専用動画（正方形） -->
+            <source
+              media="(max-width: 767px)"
+              src="images/top/hero_mobile.mp4"
+              type="video/mp4"
+            />
+            <source src="images/top/hero.mp4" type="video/mp4" />
+          </video>
 
           <div class="p-hero__inner l-inner">
             <!-- ロゴ分のスペース（実体は .c-logo-mark） -->
@@ -479,7 +486,7 @@
               />です。
             </p>
             <p class="p-top-contact__text">
-              仕事のご依頼、ご相談、お見積り、採用情報などお気軽にお問い合わせください。
+              <span class="u-inline-block">仕事のご依頼、ご相談、お見積り、採用情報など</span><span class="u-inline-block">お気軽にお問い合わせください。</span>
             </p>
             <a class="c-cta-button" href="contact.html">
               <span class="c-cta-button__label">CONTACT</span>

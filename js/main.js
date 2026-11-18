@@ -239,8 +239,9 @@ document.documentElement.classList.add("is-js");
 })();
 
 /*-------------------------
-  社員インタビュー：社員カード（と PC の丸印）で表示するインタビューを切り替える
-  PC：常に 1 人分を表示 / SP：タップしたカードの下に開き、もう一度タップで閉じる
+  社員インタビュー：社員カード（と PC の丸印・矢印）で表示するインタビューを切り替える
+  PC：常に 1 人分を表示するカルーセル。矢印は端まで行くと反対の端へ戻る
+  SP：タップしたカードの下に開き、もう一度タップで閉じる
 -------------------------*/
 (() => {
   const viewer = document.querySelector(".js-interview-viewer");
@@ -267,13 +268,31 @@ document.documentElement.classList.add("is-js");
   };
 
   const currentId = () => panels.find((panel) => panel.classList.contains("is-open"))?.id ?? null;
+  const currentIndex = () => panels.findIndex((panel) => panel.classList.contains("is-open"));
+
+  // PC：進む向きに合わせて滑り込ませる（step は 1 で次へ、-1 で前へ）
+  const slide = (index, step) => {
+    if (index === currentIndex()) return;
+    viewer.classList.toggle("is-slide-next", step > 0);
+    viewer.classList.toggle("is-slide-prev", step < 0);
+    show(panels[index].id);
+  };
+
+  const move = (step) => {
+    const count = panels.length;
+    slide((currentIndex() + step + count) % count, step);
+  };
+
+  viewer.querySelector(".js-interview-prev")?.addEventListener("click", () => move(-1));
+  viewer.querySelector(".js-interview-next")?.addEventListener("click", () => move(1));
 
   triggers.forEach((trigger) => {
     trigger.addEventListener("click", () => {
       const id = trigger.getAttribute("aria-controls");
 
       if (mq.matches) {
-        show(id);
+        const index = panels.findIndex((panel) => panel.id === id);
+        slide(index, index - currentIndex());
         return;
       }
 
@@ -290,6 +309,7 @@ document.documentElement.classList.add("is-js");
 
   // SP は一覧だけを表示した状態から始め、PC では必ず 1 人分を表示
   const sync = () => {
+    viewer.classList.remove("is-slide-next", "is-slide-prev");
     if (mq.matches && !currentId()) show(panels[0].id);
     if (!mq.matches) show(null);
   };

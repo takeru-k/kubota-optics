@@ -140,6 +140,9 @@ a {
     "Noto Sans JP", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ,
     Meiryo, "Arial", sans-serif;
 
+  /* 本文の文字サイズ（説明文・インタビューの回答などで共有） */
+  --font-size-text: clamp(11px, 2.9vw, 16px);
+
   /* スペーシング */
   --spacing-xs: 4px;
   --spacing-sm: 8px;
@@ -169,6 +172,7 @@ a {
 @media (min-width: 1024px) {
   :root {
     --header-height: 80px;
+    --font-size-text: clamp(12px, 1.1vw, 16px);
   }
 }
 
@@ -988,7 +992,7 @@ body {
 
 .c-split__text {
   margin-top: 16px;
-  font-size: 12px;
+  font-size: var(--font-size-text);
   line-height: 2;
   letter-spacing: 0.08em;
 }
@@ -1578,7 +1582,7 @@ body {
 
 .c-process__text {
   padding: 28px 16px 28px;
-  font-size: 12px;
+  font-size: var(--font-size-text);
   line-height: 2;
   letter-spacing: 0.06em;
   font-feature-settings: "palt";
@@ -1679,7 +1683,6 @@ body {
   .c-process__text {
     grid-area: 3 / 2;
     padding: 1.8vw 0 0;
-    font-size: clamp(12px, 0.97vw, 14px);
     letter-spacing: 0.04em;
   }
 }
@@ -1948,7 +1951,7 @@ body {
 
 .c-feature__text {
   margin-top: 20px;
-  font-size: 12px;
+  font-size: var(--font-size-text);
   line-height: 2;
   letter-spacing: 0.1em;
   color: var(--color-dark);
@@ -2011,9 +2014,7 @@ body {
 
   .c-feature__text {
     margin-top: 2vw;
-    font-size: clamp(12px, 1vw, 15px);
     letter-spacing: 0.04em;
-    font-size: 14px;
   }
 }
 
@@ -2089,27 +2090,19 @@ body {
 }
 
 /*-------------------------
-  l-sticky-area：中の要素が追従する範囲（ページ内ナビなど）
-  l-anchor：ページ内リンクの着地点。固定ヘッダー＋追従ナビの高さぶん下げる
+  l-sticky-area：ページ内ナビと本文をまとめる範囲
+  l-anchor：ページ内リンクの着地点。固定ヘッダーの高さぶん下げる
 -------------------------*/
 .l-sticky-area {
-  --page-nav-height: 0px;
-
   position: relative;
 }
 
 .l-anchor {
-  scroll-margin-top: calc(var(--header-height) + var(--page-nav-height));
-}
-
-@media (min-width: 1024px) {
-  .l-sticky-area {
-    --page-nav-height: calc(7vw + 32px);
-  }
+  scroll-margin-top: var(--header-height);
 }
 
 /*-------------------------
-  c-page-nav：ページ内ナビ（PC のみ・スクロールに追従）
+  c-page-nav：ページ内ナビ（PC のみ）
   タブは斜めの形と文字を描き込んだ画像。斜めの余白ぶん重ねて並べる
 -------------------------*/
 .c-page-nav {
@@ -2118,12 +2111,8 @@ body {
 
 @media (min-width: 1024px) {
   .c-page-nav {
-    position: sticky;
-    top: calc(var(--header-height) + 16px);
-    z-index: 20;
     display: block;
     margin: 2.3vw 4.2vw 0 8.3vw;
-    pointer-events: none; /* タブのすき間は下の要素を操作できるように */
   }
 
   .c-page-nav__list {
@@ -2141,7 +2130,6 @@ body {
 
   .c-page-nav__link {
     display: block;
-    pointer-events: auto;
   }
 
   .c-page-nav__link img {
@@ -3518,7 +3506,8 @@ body {
   c-interview-viewer：インタビューの切り替え表示
   SP：社員の一覧を並べ、選んだ社員のインタビューをそのカードの直下に開く
       （一覧と本文の入れ物を display: contents にし、order で交互に並べる）
-  PC：選んだ社員のインタビューを上に大きく表示。下に丸印と社員の一覧
+  PC：上に社員の一覧と丸印、下に選んだ社員のインタビューを大きく表示。
+      左右の矢印で前後の社員へ切り替え（カルーセル）
 -------------------------*/
 .c-interview-viewer {
   display: flex;
@@ -3526,6 +3515,7 @@ body {
   gap: 12px;
 }
 
+.c-interview-viewer__stage,
 .c-interview-viewer__panels,
 .c-interview-viewer__list {
   display: contents;
@@ -3554,7 +3544,8 @@ body {
   }
 }
 
-.c-interview-viewer__dots {
+.c-interview-viewer__dots,
+.c-interview-viewer .c-interview-viewer__arrow {
   display: none;
 }
 
@@ -3580,7 +3571,56 @@ body {
 
   .c-interview-viewer__panels > .is-open {
     animation: none;
-    transition: opacity 0.5s var(--ease-out);
+  }
+
+  /* 矢印・丸印で切り替えたときは、進む向きから滑り込ませる */
+  .c-interview-viewer.is-slide-next .c-interview-viewer__panels > .is-open {
+    animation: interview-slide-next 0.6s var(--ease-out) both;
+  }
+
+  .c-interview-viewer.is-slide-prev .c-interview-viewer__panels > .is-open {
+    animation: interview-slide-prev 0.6s var(--ease-out) both;
+  }
+
+  @keyframes interview-slide-next {
+    from {
+      opacity: 0;
+      translate: 6% 0;
+    }
+  }
+
+  @keyframes interview-slide-prev {
+    from {
+      opacity: 0;
+      translate: -6% 0;
+    }
+  }
+
+  /* 矢印はインタビューの左右の枠線上に、上下中央で重ねる */
+  .c-interview-viewer__stage {
+    position: relative;
+    display: block;
+    margin-top: 1.9vw;
+  }
+
+  .c-interview-viewer__panels {
+    overflow: clip;
+  }
+
+  .c-interview-viewer .c-interview-viewer__arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    display: grid;
+    translate: -50% -50%;
+  }
+
+  .c-interview-viewer__arrow--prev {
+    left: 0;
+  }
+
+  .c-interview-viewer__arrow--next {
+    left: 100%;
   }
 
   .c-interview-viewer__dots {
@@ -3613,7 +3653,6 @@ body {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 1.2vw;
-    margin-top: 2.4vw;
   }
 }
 
@@ -3724,7 +3763,7 @@ body {
 .c-interview__answer {
   margin-top: 6px;
   padding-left: 1em;
-  font-size: clamp(11px, 2.9vw, 16px);
+  font-size: var(--font-size-text);
   line-height: 1.75;
 }
 
@@ -3769,10 +3808,12 @@ body {
     font-size: clamp(16px, 1.75vw, 26px);
   }
 
+  /* 写真の幅に収まらないときは折り返す（右の Q&A に重ならないように） */
   .c-interview__name {
     margin-top: 0.8vw;
-    font-size: clamp(20px, 2vw, 30px);
-    letter-spacing: 0.06em;
+    font-size: clamp(18px, 1.75vw, 28px);
+    letter-spacing: 0.04em;
+    white-space: normal;
   }
 
   .c-interview__meta {
@@ -3792,13 +3833,12 @@ body {
   .c-interview__answer {
     margin-top: 0.6vw;
     padding-left: 1.6em;
-    font-size: clamp(12px, 1.1vw, 16px);
   }
 }
 
 /*-------------------------
   c-staff-card：社員カード（写真＋プロフィール）。選択中は is-current で青い枠
-  SP：写真の右にプロフィール / PC：写真の下にプロフィール
+  SP：写真の右にプロフィール / PC：「PROFILE」→ 写真 → 名前・入社年の順に縦並び
 -------------------------*/
 .c-staff-card {
   display: grid;
@@ -3865,14 +3905,23 @@ body {
 @media (min-width: 1024px) {
   .c-staff-card {
     grid-template-columns: minmax(0, 1fr);
-    align-items: start;
-    gap: 1.2vw;
+    align-content: start;
+    gap: 0;
     height: 100%;
-    padding: 1.8vw 1.9vw 2vw;
+    padding: 1.1vw 1.5vw 1.3vw;
+  }
+
+  /* 本文の入れ物を外し、「PROFILE」だけ写真の上へ */
+  .c-staff-card__body {
+    display: contents;
+  }
+
+  .c-staff-card__label {
+    order: -1;
+    margin-bottom: 0.5vw;
   }
 
   .c-staff-card__img {
-    aspect-ratio: 553 / 794;
     transition: opacity var(--transition-speed);
   }
 
@@ -3885,12 +3934,14 @@ body {
   }
 
   .c-staff-card__name {
+    margin-top: 0.9vw;
     font-size: clamp(14px, 1.5vw, 22px);
     letter-spacing: -0.02em;
     white-space: nowrap;
   }
 
   .c-staff-card__join {
+    margin-top: 0.3vw;
     font-size: clamp(10px, 0.85vw, 13px);
   }
 }
@@ -4369,6 +4420,42 @@ body {
 }
 
 /*-------------------------
+  c-arrow-button：丸い矢印ボタン（右向き。--prev で左向き）
+-------------------------*/
+.c-arrow-button {
+  display: inline-grid;
+  place-items: center;
+  width: clamp(36px, 2.9vw, 48px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: var(--color-main);
+  color: var(--color-white);
+  cursor: pointer;
+  transition: background-color var(--transition-speed);
+}
+
+.c-arrow-button::before {
+  content: "";
+  width: 28%;
+  aspect-ratio: 1;
+  margin-left: -10%;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  rotate: 45deg;
+}
+
+.c-arrow-button--prev::before {
+  margin-right: -10%;
+  margin-left: 0;
+  rotate: -135deg;
+}
+
+.c-arrow-button:hover,
+.c-arrow-button:focus-visible {
+  background-color: var(--color-main-dark);
+}
+
+/*-------------------------
   c-contact-band：お問い合わせ導線＋SNS バナー（下層ページ共通）
 -------------------------*/
 .c-contact-band {
@@ -4389,7 +4476,7 @@ body {
 
 .c-contact-band__text {
   margin-top: 8px;
-  font-size: 12px;
+  font-size: var(--font-size-text);
 }
 
 .c-contact-band__button {
@@ -4423,7 +4510,6 @@ body {
 
   .c-contact-band__text {
     margin-top: 4px;
-    font-size: 11px;
   }
 
   .c-contact-band__button {
@@ -4654,7 +4740,7 @@ body {
 
 .p-about__text {
   margin-top: 32px;
-  font-size: 12px;
+  font-size: var(--font-size-text);
   line-height: 2.2;
   letter-spacing: 0.08em;
 }
@@ -4684,12 +4770,6 @@ body {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     align-items: end;
     gap: 40px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .p-about__text {
-    font-size: 13px;
   }
 }
 
@@ -4733,7 +4813,7 @@ body {
 
 .p-top-contact__text {
   margin-top: 8px;
-  font-size: 14px;
+  font-size: var(--font-size-text);
   letter-spacing: 0.06em;
 }
 
